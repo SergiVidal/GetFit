@@ -9,9 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Sergi on 01/03/2018.
@@ -21,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
     Button btnLogin;
-    FirebaseDatabase database;
     FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
@@ -33,28 +34,12 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         btnLogin = findViewById(R.id.registrar);
 
-
-        database = FirebaseDatabase.getInstance();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String emailRegistro = email.getText().toString();
                 String passwordRegistro = password.getText().toString();
                 iniciarSesion(emailRegistro, passwordRegistro);
-
-                mAuthListener = new FirebaseAuth.AuthStateListener() {
-                    @Override
-                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                        FirebaseUser user = firebaseAuth.getCurrentUser(); //FirebaseAuth.getInstance().getCurrentUser();
-                        if(user != null){
-                            Log.d("SESION", "Sesion iniciada con email: " + user.getEmail());
-                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                            startActivity(intent);
-                        }else {
-                            Log.d("SESION", "Sesion cerrada");
-                        }
-                    }
-                };
             }
         });
     }
@@ -62,6 +47,17 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void iniciarSesion(String email, String pass){
-        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass);
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    Log.d("SESION", "Usuario creado correctamente");
+                }else {
+                    Log.d("SESION", task.getException().getMessage()+"");
+                }
+            }
+        });
     }
 }
