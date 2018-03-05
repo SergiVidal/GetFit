@@ -45,8 +45,8 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    //Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                    startActivity(intent);
                     Log.d("SESION", "Usuario creado correctamente");
                 }else {
                     Log.d("SESION", task.getException().getMessage()+"");
