@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegistroActivity extends AppCompatActivity {
 
     EditText email, password;
-    Button btnRegistrar;
+    Button btnRegistrar, btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class RegistroActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         btnRegistrar = findViewById(R.id.registrar);
+        btnLogin = findViewById(R.id.login);
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +36,14 @@ public class RegistroActivity extends AppCompatActivity {
                 String emailRegistro = email.getText().toString();
                 String passwordRegistro = password.getText().toString();
                 registrar(emailRegistro, passwordRegistro);
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
