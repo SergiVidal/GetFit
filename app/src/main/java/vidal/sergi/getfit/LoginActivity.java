@@ -13,48 +13,45 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class RegistroActivity extends AppCompatActivity {
+/**
+ * Created by Sergi on 01/03/2018.
+ */
+
+public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
-    Button btnRegistrar, btnLogin;
+    Button btnLogin;
+    FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.activity_login);
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        btnRegistrar = findViewById(R.id.registrar);
-        btnLogin = findViewById(R.id.login);
-
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("BUTTON","onCLick()");
-                String emailRegistro = email.getText().toString();
-                String passwordRegistro = password.getText().toString();
-                registrar(emailRegistro, passwordRegistro);
-            }
-        });
+        btnLogin = findViewById(R.id.registrar);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                String emailRegistro = email.getText().toString();
+                String passwordRegistro = password.getText().toString();
+                iniciarSesion(emailRegistro, passwordRegistro);
             }
         });
     }
 
-    private void registrar(String email, String pass){
-        Log.d("SESION", "registrar()");
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+
+    private void iniciarSesion(String email, String pass){
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
-                    Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
                     Log.d("SESION", "Usuario creado correctamente");
                 }else {
