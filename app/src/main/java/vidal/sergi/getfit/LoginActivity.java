@@ -22,8 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
-    Button btnLogin;
-    FirebaseAuth.AuthStateListener mAuthListener;
+    Button btnLogin, btnRegistrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,8 @@ public class LoginActivity extends AppCompatActivity {
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        btnLogin = findViewById(R.id.registrar);
+        btnLogin = findViewById(R.id.login);
+        btnRegistrar = findViewById(R.id.registrar);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +40,13 @@ public class LoginActivity extends AppCompatActivity {
                 String emailRegistro = email.getText().toString();
                 String passwordRegistro = password.getText().toString();
                 iniciarSesion(emailRegistro, passwordRegistro);
+            }
+        });
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+                startActivity(intent);
             }
         });
     }
