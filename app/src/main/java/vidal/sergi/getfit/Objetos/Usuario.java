@@ -5,49 +5,102 @@ package vidal.sergi.getfit.Objetos;
  */
 
 public class Usuario {
-//    String nombreUsuario;
-//    String password;
-//    String email;
-//
-//    public Usuario() {
-//    }
-//
-//    public Usuario(String nombreUsuario, String password, String email) {
-//        this.nombreUsuario = nombreUsuario;
-//        this.password = password;
-//        this.email = email;
-//    }
-//
-//    public String getNombreUsuario() {
-//        return nombreUsuario;
-//    }
-//
-//    public void setNombreUsuario(String nombreUsuario) {
-//        this.nombreUsuario = nombreUsuario;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Usuario{" +
-//                "nombreUsuario='" + nombreUsuario + '\'' +
-//                ", password='" + password + '\'' +
-//                ", email='" + email + '\'' +
-//                '}';
-//    }
+    String password;
+    String nombre;
+    String apellidos;
+    int edad;
+    String sexo;
+    double peso;
+    int altura;
+    double imc;
+
+    public Usuario() {
+    }
+
+    public Usuario(String nombre, String apellidos, int edad, String sexo, double peso, int altura) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.peso = peso;
+        this.altura = altura;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
+    }
+
+    public double getImc() {
+        return imc;
+    }
+
+    public void setImc(double imc) {
+        this.imc = imc;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                ", password='" + password + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", edad=" + edad +
+                ", sexo='" + sexo + '\'' +
+                ", peso=" + peso +
+                ", altura=" + altura +
+                ", imc=" + imc +
+                '}';
+    }
 }

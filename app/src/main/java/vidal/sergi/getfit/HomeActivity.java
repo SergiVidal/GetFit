@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        final String username = getIntent().getExtras().getString("user");
         btnRutinas = findViewById(R.id.btnRutinas);
         btnAjustes = findViewById(R.id.btnAjustes);
 
@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, AjustesActivity.class);
+                intent.putExtra("user", username);
                 startActivity(intent);
             }
         });

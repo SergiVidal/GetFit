@@ -5,5 +5,6 @@ package vidal.sergi.getfit.Objetos;
  */
 
 public class FirebaseReferences {
-
+    public static final String USERS = "users";
+    public static final String ADMIN = "admin";
 }
