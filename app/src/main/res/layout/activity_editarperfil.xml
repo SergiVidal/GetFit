@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Ajustes" />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="40dp"
+        android:layout_toStartOf="@+id/textView"
+        android:text="Nombre:" />
+
+    <TextView
+        android:id="@+id/tvApellidos"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvNombre"
+        android:layout_below="@+id/tvNombre"
+        android:layout_marginTop="30dp"
+        android:text="Apellidos:" />
+
+    <TextView
+        android:id="@+id/tvEdad"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvApellidos"
+        android:layout_alignStart="@+id/tvApellidos"
+        android:layout_marginTop="30dp"
+        android:text="Edad:" />
+
+    <TextView
+        android:id="@+id/tvSexo"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvEdad"
+        android:layout_alignStart="@+id/tvEdad"
+        android:layout_marginTop="30dp"
+        android:text="Sexo" />
+
+    <TextView
+        android:id="@+id/tvPeso"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSexo"
+        android:layout_alignStart="@+id/tvSexo"
+        android:layout_marginTop="30dp"
+        android:text="Peso:" />
+
+    <TextView
+        android:id="@+id/tvAltura"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvPeso"
+        android:layout_below="@+id/edPeso"
+        android:layout_marginTop="30dp"
+        android:text="Altura:" />
+
+    <EditText
+        android:id="@+id/edNombre"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/tvNombre"
+        android:layout_alignBottom="@+id/tvNombre"
+        android:layout_alignStart="@+id/edApellidos"
+        android:hint="Nombre"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/edApellidos"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/tvApellidos"
+        android:layout_alignBottom="@+id/tvApellidos"
+        android:layout_toEndOf="@+id/textView"
+        android:hint="Apellidos"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/edEdad"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/tvEdad"
+        android:layout_alignBottom="@+id/tvEdad"
+        android:layout_toEndOf="@+id/textView"
+        android:hint="Edad"
+        android:textSize="14sp"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edSexo"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/tvSexo"
+        android:layout_alignBottom="@+id/tvSexo"
+        android:layout_alignStart="@+id/edEdad"
+        android:hint="Sexo"
+        android:textSize="14sp"/>
+
+    <EditText
+        android:id="@+id/edPeso"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/tvPeso"
+        android:layout_alignBottom="@+id/tvPeso"
+        android:layout_alignStart="@+id/edSexo"
+        android:hint="Peso"
+        android:textSize="14sp"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/edAltura"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/tvAltura"
+        android:layout_alignBottom="@+id/tvAltura"
+        android:layout_alignStart="@+id/edPeso"
+        android:hint="Altura"
+        android:textSize="14sp"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/edAltura"
+        android:layout_alignStart="@+id/tvAltura"
+        android:layout_below="@+id/edAltura"
+        android:layout_marginTop="28dp"
+        android:text="Guardar" />
+
+    <Button
+        android:id="@+id/btnIMC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/btnSave"
+        android:layout_alignStart="@+id/btnSave"
+        android:layout_below="@+id/btnSave"
+        android:layout_marginTop="20dp"
+        android:text="Calcular IMC" />
+
+</RelativeLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ajustes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:text="Ajustes"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/cuenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ajustes"
+        android:layout_marginTop="40dp"
+        android:layout_toStartOf="@+id/ajustes"
+        android:text="Cuenta"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/editarPerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/cuenta"
+        android:layout_below="@+id/cuenta"
+        android:layout_marginTop="23dp"
+        android:text="Editar Perfil"
+        android:onClick="onClick"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/configuracion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editarPerfil"
+        android:layout_below="@+id/editarPerfil"
+        android:layout_marginTop="24dp"
+        android:text="Configuración"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/idioma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/configuracion"
+        android:layout_below="@+id/configuracion"
+        android:layout_marginTop="24dp"
+        android:text="Idioma" />
+
+    <TextView
+        android:id="@+id/notificaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/idioma"
+        android:layout_below="@+id/idioma"
+        android:layout_marginTop="21dp"
+        android:text="Notificaciones" />
+
+    <TextView
+        android:id="@+id/informacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/notificaciones"
+        android:layout_below="@+id/notificaciones"
+        android:layout_marginTop="17dp"
+        android:text="Información"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/politica"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/informacion"
+        android:layout_below="@+id/informacion"
+        android:layout_marginTop="23dp"
+        android:text="Política de privacidad" />
+
+    <TextView
+        android:id="@+id/anuncios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/politica"
+        android:layout_below="@+id/politica"
+        android:layout_marginTop="18dp"
+        android:text="Anuncios" />
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/anuncios"
+        android:layout_below="@+id/anuncios"
+        android:layout_marginTop="16dp"
+        android:text="Versión" />
+
+    <TextView
+        android:id="@+id/ayuda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/version"
+        android:layout_below="@+id/version"
+        android:layout_marginTop="16dp"
+        android:text="Ayuda" />
+
+</RelativeLayout>
