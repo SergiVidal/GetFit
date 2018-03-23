@@ -26,6 +26,7 @@ public class AjustesActivity extends AppCompatActivity{
 
         final String username = getIntent().getExtras().getString("user");
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_ajustes);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
