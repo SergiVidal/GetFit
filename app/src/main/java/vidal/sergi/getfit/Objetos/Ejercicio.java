@@ -10,7 +10,6 @@ public class Ejercicio {
     private int series;
     private int repeticiones;
     private double descanso;
-    private Image image;
 
     public Ejercicio(int series, int repeticiones, double descanso) {
         this.series = series;
@@ -42,21 +41,12 @@ public class Ejercicio {
         this.descanso = descanso;
     }
 
-    public Image getImage() {
-        return image;
-    }
-
-    public void setImage(Image image) {
-        this.image = image;
-    }
-
     @Override
     public String toString() {
         return "Ejercicio{" +
                 "series=" + series +
                 ", repeticiones=" + repeticiones +
                 ", descanso=" + descanso +
-                ", image=" + image +
                 '}';
     }
 }

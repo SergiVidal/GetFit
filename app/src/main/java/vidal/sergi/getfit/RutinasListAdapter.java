@@ -7,44 +7,43 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
+import vidal.sergi.getfit.Objetos.Rutina;
 
 public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.ViewHolder> {
 
-    public RutinasListAdapter() {
+    private List<Rutina> nombreList;
+
+    RutinasListAdapter (List<Rutina> nombreList){
+        this.nombreList = nombreList;
     }
 
     //Crear i asignar el ViewHolder amb els components
     class ViewHolder extends RecyclerView.ViewHolder{
-        Button btnMostrarRutinas;
-        TextView tvNombreRutina, tvSeguidores;
+        TextView tvNombreRutina;
 
         public ViewHolder(View itemVIew){
             super(itemVIew);
-            btnMostrarRutinas = itemVIew.findViewById(R.id.btnMostrarRutina);
             tvNombreRutina = itemVIew.findViewById(R.id.tvNombreRutina);
-            tvSeguidores = itemVIew.findViewById(R.id.tvSeguidores);
         }
     }
 
     //Al crear el ViewHolder, inflar el layout Player
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rutina, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.rutina, parent, false));
     }
 
     //Bindejar l'informació del JSON als components
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvNombreRutina.setText("Rutina");
-        holder.tvSeguidores.setText("Rutina");
-//        holder.btnMostrarRutinas;
-
+        holder.tvNombreRutina.setText(nombreList.get(position).getNombre());
     }
 
     //Retornar la cantitad de players
     @Override
     public int getItemCount() {
-        return 3;
+        return nombreList.size();
     }
 }
