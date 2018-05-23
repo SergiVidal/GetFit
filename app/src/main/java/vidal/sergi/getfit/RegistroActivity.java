@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,7 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegistroActivity extends AppCompatActivity {
 
     EditText email, password;
-    Button btnRegistrar, btnLogin;
+    TextView btnLogin;
+    Button btnRegistrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

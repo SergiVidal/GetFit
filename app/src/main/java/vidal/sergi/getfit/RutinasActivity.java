@@ -74,9 +74,9 @@ public class RutinasActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.action_dietas:
-                        //Intent intent2 = new Intent(HomeActivity.this,DietasActivity.class);
-                        //startActivity(intent2);
-                        // Toast.makeText(HomeActivity.this,"Action remove clicked",Toast.LENGTH_SHORT).show();
+                        intent = new Intent(RutinasActivity.this, DietasActivity.class);
+                        intent.putExtra("user", username);
+                        startActivity(intent);
                         break;
                     case R.id.action_ajustes:
                         intent = new Intent(RutinasActivity.this, AjustesActivity.class);
@@ -100,22 +100,6 @@ public class RutinasActivity extends AppCompatActivity {
         recyclerView.setLayoutManager (new LinearLayoutManager(RutinasActivity.this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
-
-//        rutinas.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                Log.d("svm", dataSnapshot.getValue() + "");
-//                rutinaList = (List<Rutina>) dataSnapshot.getValue();
-//                recyclerView.setAdapter(new RutinasListAdapter(rutinaList));
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-
-
     }
 
     private List<Musculo> crearRutina1(){
@@ -123,160 +107,152 @@ public class RutinasActivity extends AppCompatActivity {
         ejercicioList = new ArrayList<>();
 
         //Grupo 1
-        Ejercicio pressBarra = new Ejercicio(4, 12, 2);
+        Ejercicio pressBarra = new Ejercicio("Press inclinado con barra",4, 12, 2);
         ejercicioList.add(pressBarra);
-        Ejercicio pressMancuernas = new Ejercicio(3, 10, 2);
+        Ejercicio pressMancuernas = new Ejercicio("Press banca con mancuernas", 3, 10, 2);
         ejercicioList.add(pressMancuernas);
-        Ejercicio aperturasInclinadas = new Ejercicio(3, 15, 1.30);
+        Ejercicio aperturasInclinadas = new Ejercicio("Aperturas inclinadas 15º", 3, 15, 1.30);
         ejercicioList.add(aperturasInclinadas);
-        Ejercicio peckDeck = new Ejercicio(3, 12, 1.30);
+        Ejercicio peckDeck = new Ejercicio("Peck deck", 3, 12, 1.30);
         ejercicioList.add(peckDeck);
 
-        Musculo pectoral = new Musculo(ejercicioList);
+        Musculo pectoral = new Musculo("Pectoral", ejercicioList);
         musculoList.add(pectoral);
 
-        rutinas.child(rutina1.getKey()).child("Pectoral").child("Press inclinado con barra").setValue(ejercicioList.get(0));
-        rutinas.child(rutina1.getKey()).child("Pectoral").child("Press banca con mancuernas").setValue(ejercicioList.get(1));
-        rutinas.child(rutina1.getKey()).child("Pectoral").child("Aperturas inclinadas 15º").setValue(ejercicioList.get(2));
-        rutinas.child(rutina1.getKey()).child("Pectoral").child("Peck deck").setValue(ejercicioList.get(3));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(pectoral.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
 //        //Grupo 2
         ejercicioList = new ArrayList<>();
 
-        Ejercicio pressFrontal = new Ejercicio(4, 12, 2);
+        Ejercicio pressFrontal = new Ejercicio("Press Frontal en Maquina", 4, 12, 2);
         ejercicioList.add(pressFrontal);
-        Ejercicio elevacionesLateralPolea = new Ejercicio(4, 10, 0);
+        Ejercicio elevacionesLateralPolea = new Ejercicio("Elevaciones Laterales en Polea", 4, 10, 0);
         ejercicioList.add(elevacionesLateralPolea);
-        Ejercicio pressNuca = new Ejercicio(3, 10, 2);
+        Ejercicio pressNuca = new Ejercicio("Press Tras Nuca", 3, 10, 2);
         ejercicioList.add(pressNuca);
 
-        Musculo hombroFrontal = new Musculo(ejercicioList);
+        Musculo hombroFrontal = new Musculo("Hombro Frontal", ejercicioList);
         musculoList.add(hombroFrontal);
 
-        rutinas.child(rutina1.getKey()).child("Hombro Frontal").child("Press Frontal en Maquina").setValue(ejercicioList.get(0));
-        rutinas.child(rutina1.getKey()).child("Hombro Frontal").child("Elevaciones Laterales en Polea").setValue(ejercicioList.get(1));
-        rutinas.child(rutina1.getKey()).child("Hombro Frontal").child("Press Tras Nuca").setValue(ejercicioList.get(2));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(hombroFrontal.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 3
         ejercicioList = new ArrayList<>();
 
-        Ejercicio tricepsPolea = new Ejercicio(4, 12, 1.30);
+        Ejercicio tricepsPolea = new Ejercicio("Triceps en Polea", 4, 12, 1.30);
         ejercicioList.add(tricepsPolea);
-        Ejercicio pressFrances = new Ejercicio(4, 12, 1.30);
+        Ejercicio pressFrances = new Ejercicio("Press Frances en Polea", 4, 12, 1.30);
         ejercicioList.add(pressFrances);
 
-        Musculo triceps = new Musculo(ejercicioList);
+        Musculo triceps = new Musculo("Triceps", ejercicioList);
         musculoList.add(triceps);
 
-        rutinas.child(rutina1.getKey()).child("Triceps").child("Triceps en Polea").setValue(ejercicioList.get(0));
-        rutinas.child(rutina1.getKey()).child("Triceps").child("Press Frances en Polea").setValue(ejercicioList.get(1));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(triceps.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 4
         ejercicioList = new ArrayList<>();
 
-        Ejercicio jalonPecho = new Ejercicio(4, 12, 2);
+        Ejercicio jalonPecho = new Ejercicio("Jalon al Pecho", 4, 12, 2);
         ejercicioList.add(jalonPecho);
-        Ejercicio remoBajoPolea = new Ejercicio(4, 10, 1.30);
+        Ejercicio remoBajoPolea = new Ejercicio("Remo Bajo en Polea", 4, 10, 1.30);
         ejercicioList.add(remoBajoPolea);
-        Ejercicio jalonPechoInvertido = new Ejercicio(4, 10, 2);
+        Ejercicio jalonPechoInvertido = new Ejercicio("Jalon al Pecho Invertido", 4, 10, 2);
         ejercicioList.add(jalonPechoInvertido);
-        Ejercicio jalonNuca = new Ejercicio(3, 12, 2);
+        Ejercicio jalonNuca = new Ejercicio("Jalon tras Nuca", 3, 12, 2);
         ejercicioList.add(jalonNuca);
 
-        Musculo dorsal = new Musculo(ejercicioList);
+        Musculo dorsal = new Musculo("Dorsal", ejercicioList);
         musculoList.add(dorsal);
 
-
-        rutinas.child(rutina1.getKey()).child("Dorsal").child("Jalon al Pecho").setValue(ejercicioList.get(0));
-        rutinas.child(rutina1.getKey()).child("Dorsal").child("Remo Bajo en Polea").setValue(ejercicioList.get(1));
-        rutinas.child(rutina1.getKey()).child("Dorsal").child("Jalon al Pecho Invertido").setValue(ejercicioList.get(2));
-        rutinas.child(rutina1.getKey()).child("Dorsal").child("Jalon tras Nuca").setValue(ejercicioList.get(3));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(dorsal.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 5
         ejercicioList = new ArrayList<>();
 
-        Ejercicio pajarosMaquina = new Ejercicio(4, 12, 1.30);
+        Ejercicio pajarosMaquina = new Ejercicio("Pajaros en MAquina", 4, 12, 1.30);
         ejercicioList.add(pajarosMaquina);
-        Ejercicio encogimientosMancuernas = new Ejercicio(3, 12, 1.15);
+        Ejercicio encogimientosMancuernas = new Ejercicio("Encogimientos con Mancuernas", 3, 12, 1.15);
         ejercicioList.add(encogimientosMancuernas);
 
-        Musculo hombrosPosterior = new Musculo(ejercicioList);
+        Musculo hombrosPosterior = new Musculo("Hombro Posterior", ejercicioList);
         musculoList.add(hombrosPosterior);
 
-        rutinas.child(rutina1.getKey()).child("Hombros Posterior").child("Pajaros en MAquina").setValue(ejercicioList.get(0));
-        rutinas.child(rutina1.getKey()).child("Hombros Posterior").child("Encogimientos con Mancuernas").setValue(ejercicioList.get(1));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(hombrosPosterior.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 6
         ejercicioList = new ArrayList<>();
 
-        Ejercicio curlBarraPolea = new Ejercicio(4, 12, 1);
+        Ejercicio curlBarraPolea = new Ejercicio("Curl con Barra en Polea", 4, 12, 1);
         ejercicioList.add(curlBarraPolea);
-        Ejercicio curlMancuernas = new Ejercicio(4, 12, 1);
+        Ejercicio curlMancuernas = new Ejercicio("Curl Alterno con Mancuernas", 4, 12, 1);
         ejercicioList.add(curlMancuernas);
 
-        Musculo biceps = new Musculo(ejercicioList);
+        Musculo biceps = new Musculo("Biceps", ejercicioList);
         musculoList.add(biceps);
 
-        rutinas.child(rutina1.getKey()).child("Biceps").child("Curl con Barra en Polea").setValue(ejercicioList.get(0));
-        rutinas.child(rutina1.getKey()).child("Biceps").child("Curl Alterno con Mancuernas").setValue(ejercicioList.get(1));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(biceps.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 7
         ejercicioList = new ArrayList<>();
 
-        Ejercicio extensionCuadriceps = new Ejercicio(4, 15, 2);
+        Ejercicio extensionCuadriceps = new Ejercicio("Extension de Cuadriceps", 4, 15, 2);
         ejercicioList.add(extensionCuadriceps);
-        Ejercicio sentadilla = new Ejercicio(4, 12, 2);
+        Ejercicio sentadilla = new Ejercicio("Sentadillas", 4, 12, 2);
         ejercicioList.add(sentadilla);
-        Ejercicio prensa = new Ejercicio(3, 12, 2);
+        Ejercicio prensa = new Ejercicio("Prensa", 3, 12, 2);
         ejercicioList.add(prensa);
-        Ejercicio zancadasMultipower = new Ejercicio(3, 10, 0);
+        Ejercicio zancadasMultipower = new Ejercicio("Jalon tras Nuca", 3, 10, 0);
         ejercicioList.add(zancadasMultipower);
 
-        Musculo cuadriceps = new Musculo(ejercicioList);
+        Musculo cuadriceps = new Musculo("Cuadriceps", ejercicioList);
         musculoList.add(cuadriceps);
 
-        rutinas.child(rutina1.getKey()).child("Cuadriceps").child("Extension de Cuadriceps").setValue(ejercicioList.get(0));
-        rutinas.child(rutina1.getKey()).child("Cuadriceps").child("Sentadillas").setValue(ejercicioList.get(1));
-        rutinas.child(rutina1.getKey()).child("Cuadriceps").child("Prensa").setValue(ejercicioList.get(2));
-        rutinas.child(rutina1.getKey()).child("Cuadriceps").child("Jalon tras Nuca").setValue(ejercicioList.get(3));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(cuadriceps.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 8
         ejercicioList = new ArrayList<>();
 
-        Ejercicio femoralTumbado = new Ejercicio(5, 12, 2);
+        Ejercicio femoralTumbado = new Ejercicio("Femoral Tumbado", 5, 12, 2);
         ejercicioList.add(femoralTumbado);
 
-        Musculo femoral = new Musculo(ejercicioList);
+        Musculo femoral = new Musculo("Femoral", ejercicioList);
         musculoList.add(femoral);
 
-        rutinas.child(rutina1.getKey()).child("Femoral").child("Femoral Tumbado").setValue(ejercicioList.get(0));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(femoral.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 9
         ejercicioList = new ArrayList<>();
 
-        Ejercicio gemelosMaquina = new Ejercicio(5, 12, 1);
+        Ejercicio gemelosMaquina = new Ejercicio("Gemelos sentado en Maquina", 5, 12, 1);
         ejercicioList.add(gemelosMaquina);
 
-        Musculo gemelos = new Musculo(ejercicioList);
+        Musculo gemelos = new Musculo("Gemelos", ejercicioList);
         musculoList.add(gemelos);
 
-        rutinas.child(rutina1.getKey()).child("Gemelos").child("Gemelos sentado en Maquina").setValue(ejercicioList.get(0));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(gemelos.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 10
         ejercicioList = new ArrayList<>();
 
-        Ejercicio elevacionesTronco = new Ejercicio(4, 20, 1);
+        Ejercicio elevacionesTronco = new Ejercicio("Elevaciones de Tronco", 4, 20, 1);
         ejercicioList.add(elevacionesTronco);
-        Ejercicio elevacionesPiernas = new Ejercicio(4, 20, 1);
+        Ejercicio elevacionesPiernas = new Ejercicio("Elevaciones de Piernas", 4, 20, 1);
         ejercicioList.add(elevacionesPiernas);
 
-        Musculo abdominales = new Musculo(ejercicioList);
+        Musculo abdominales = new Musculo("Abdominales", ejercicioList);
         musculoList.add(abdominales);
 
-        rutinas.child(rutina1.getKey()).child("Abdominales").child("Elevaciones de Tronco").setValue(ejercicioList.get(0));
-        rutinas.child(rutina1.getKey()).child("Abdominales").child("Elevaciones de Piernas").setValue(ejercicioList.get(1));
-
-//        Rutina rutina = new Rutina(rutina1.getKey(), musculoList);
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina1.getKey()).child(abdominales.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         return musculoList;
     }
@@ -286,160 +262,152 @@ public class RutinasActivity extends AppCompatActivity {
         ejercicioList = new ArrayList<>();
 
         //Grupo 1
-        Ejercicio pressBarra = new Ejercicio(4, 12, 2);
+        Ejercicio pressBarra = new Ejercicio("Press inclinado con barra",4, 12, 2);
         ejercicioList.add(pressBarra);
-        Ejercicio pressMancuernas = new Ejercicio(3, 10, 2);
+        Ejercicio pressMancuernas = new Ejercicio("Press banca con mancuernas", 3, 10, 2);
         ejercicioList.add(pressMancuernas);
-        Ejercicio aperturasInclinadas = new Ejercicio(3, 15, 1.30);
+        Ejercicio aperturasInclinadas = new Ejercicio("Aperturas inclinadas 15º", 3, 15, 1.30);
         ejercicioList.add(aperturasInclinadas);
-        Ejercicio peckDeck = new Ejercicio(3, 12, 1.30);
+        Ejercicio peckDeck = new Ejercicio("Peck deck", 3, 12, 1.30);
         ejercicioList.add(peckDeck);
 
-        Musculo pectoral = new Musculo(ejercicioList);
+        Musculo pectoral = new Musculo("Pectoral", ejercicioList);
         musculoList.add(pectoral);
 
-        rutinas.child(rutina2.getKey()).child("Pectoral").child("Press inclinado con barra").setValue(ejercicioList.get(0));
-        rutinas.child(rutina2.getKey()).child("Pectoral").child("Press banca con mancuernas").setValue(ejercicioList.get(1));
-        rutinas.child(rutina2.getKey()).child("Pectoral").child("Aperturas inclinadas 15º").setValue(ejercicioList.get(2));
-        rutinas.child(rutina2.getKey()).child("Pectoral").child("Peck deck").setValue(ejercicioList.get(3));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(pectoral.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
 //        //Grupo 2
         ejercicioList = new ArrayList<>();
 
-        Ejercicio pressFrontal = new Ejercicio(4, 12, 2);
+        Ejercicio pressFrontal = new Ejercicio("Press Frontal en Maquina", 4, 12, 2);
         ejercicioList.add(pressFrontal);
-        Ejercicio elevacionesLateralPolea = new Ejercicio(4, 10, 0);
+        Ejercicio elevacionesLateralPolea = new Ejercicio("Elevaciones Laterales en Polea", 4, 10, 0);
         ejercicioList.add(elevacionesLateralPolea);
-        Ejercicio pressNuca = new Ejercicio(3, 10, 2);
+        Ejercicio pressNuca = new Ejercicio("Press Tras Nuca", 3, 10, 2);
         ejercicioList.add(pressNuca);
 
-        Musculo hombroFrontal = new Musculo(ejercicioList);
+        Musculo hombroFrontal = new Musculo("Hombro Frontal", ejercicioList);
         musculoList.add(hombroFrontal);
 
-        rutinas.child(rutina2.getKey()).child("Hombro Frontal").child("Press Frontal en Maquina").setValue(ejercicioList.get(0));
-        rutinas.child(rutina2.getKey()).child("Hombro Frontal").child("Elevaciones Laterales en Polea").setValue(ejercicioList.get(1));
-        rutinas.child(rutina2.getKey()).child("Hombro Frontal").child("Press Tras Nuca").setValue(ejercicioList.get(2));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(hombroFrontal.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 3
         ejercicioList = new ArrayList<>();
 
-        Ejercicio tricepsPolea = new Ejercicio(4, 12, 1.30);
+        Ejercicio tricepsPolea = new Ejercicio("Triceps en Polea", 4, 12, 1.30);
         ejercicioList.add(tricepsPolea);
-        Ejercicio pressFrances = new Ejercicio(4, 12, 1.30);
+        Ejercicio pressFrances = new Ejercicio("Press Frances en Polea", 4, 12, 1.30);
         ejercicioList.add(pressFrances);
 
-        Musculo triceps = new Musculo(ejercicioList);
+        Musculo triceps = new Musculo("Triceps", ejercicioList);
         musculoList.add(triceps);
 
-        rutinas.child(rutina2.getKey()).child("Triceps").child("Triceps en Polea").setValue(ejercicioList.get(0));
-        rutinas.child(rutina2.getKey()).child("Triceps").child("Press Frances en Polea").setValue(ejercicioList.get(1));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(triceps.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 4
         ejercicioList = new ArrayList<>();
 
-        Ejercicio jalonPecho = new Ejercicio(4, 12, 2);
+        Ejercicio jalonPecho = new Ejercicio("Jalon al Pecho", 4, 12, 2);
         ejercicioList.add(jalonPecho);
-        Ejercicio remoBajoPolea = new Ejercicio(4, 10, 1.30);
+        Ejercicio remoBajoPolea = new Ejercicio("Remo Bajo en Polea", 4, 10, 1.30);
         ejercicioList.add(remoBajoPolea);
-        Ejercicio jalonPechoInvertido = new Ejercicio(4, 10, 2);
+        Ejercicio jalonPechoInvertido = new Ejercicio("Jalon al Pecho Invertido", 4, 10, 2);
         ejercicioList.add(jalonPechoInvertido);
-        Ejercicio jalonNuca = new Ejercicio(3, 12, 2);
+        Ejercicio jalonNuca = new Ejercicio("Jalon tras Nuca", 3, 12, 2);
         ejercicioList.add(jalonNuca);
 
-        Musculo dorsal = new Musculo(ejercicioList);
+        Musculo dorsal = new Musculo("Dorsal", ejercicioList);
         musculoList.add(dorsal);
 
-
-        rutinas.child(rutina2.getKey()).child("Dorsal").child("Jalon al Pecho").setValue(ejercicioList.get(0));
-        rutinas.child(rutina2.getKey()).child("Dorsal").child("Remo Bajo en Polea").setValue(ejercicioList.get(1));
-        rutinas.child(rutina2.getKey()).child("Dorsal").child("Jalon al Pecho Invertido").setValue(ejercicioList.get(2));
-        rutinas.child(rutina2.getKey()).child("Dorsal").child("Jalon tras Nuca").setValue(ejercicioList.get(3));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(dorsal.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 5
         ejercicioList = new ArrayList<>();
 
-        Ejercicio pajarosMaquina = new Ejercicio(4, 12, 1.30);
+        Ejercicio pajarosMaquina = new Ejercicio("Pajaros en MAquina", 4, 12, 1.30);
         ejercicioList.add(pajarosMaquina);
-        Ejercicio encogimientosMancuernas = new Ejercicio(3, 12, 1.15);
+        Ejercicio encogimientosMancuernas = new Ejercicio("Encogimientos con Mancuernas", 3, 12, 1.15);
         ejercicioList.add(encogimientosMancuernas);
 
-        Musculo hombrosPosterior = new Musculo(ejercicioList);
+        Musculo hombrosPosterior = new Musculo("Hombro Posterior", ejercicioList);
         musculoList.add(hombrosPosterior);
 
-        rutinas.child(rutina2.getKey()).child("Hombros Posterior").child("Pajaros en MAquina").setValue(ejercicioList.get(0));
-        rutinas.child(rutina2.getKey()).child("Hombros Posterior").child("Encogimientos con Mancuernas").setValue(ejercicioList.get(1));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(hombrosPosterior.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 6
         ejercicioList = new ArrayList<>();
 
-        Ejercicio curlBarraPolea = new Ejercicio(4, 12, 1);
+        Ejercicio curlBarraPolea = new Ejercicio("Curl con Barra en Polea", 4, 12, 1);
         ejercicioList.add(curlBarraPolea);
-        Ejercicio curlMancuernas = new Ejercicio(4, 12, 1);
+        Ejercicio curlMancuernas = new Ejercicio("Curl Alterno con Mancuernas", 4, 12, 1);
         ejercicioList.add(curlMancuernas);
 
-        Musculo biceps = new Musculo(ejercicioList);
+        Musculo biceps = new Musculo("Biceps", ejercicioList);
         musculoList.add(biceps);
 
-        rutinas.child(rutina2.getKey()).child("Biceps").child("Curl con Barra en Polea").setValue(ejercicioList.get(0));
-        rutinas.child(rutina2.getKey()).child("Biceps").child("Curl Alterno con Mancuernas").setValue(ejercicioList.get(1));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(biceps.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 7
         ejercicioList = new ArrayList<>();
 
-        Ejercicio extensionCuadriceps = new Ejercicio(4, 15, 2);
+        Ejercicio extensionCuadriceps = new Ejercicio("Extension de Cuadriceps", 4, 15, 2);
         ejercicioList.add(extensionCuadriceps);
-        Ejercicio sentadilla = new Ejercicio(4, 12, 2);
+        Ejercicio sentadilla = new Ejercicio("Sentadillas", 4, 12, 2);
         ejercicioList.add(sentadilla);
-        Ejercicio prensa = new Ejercicio(3, 12, 2);
+        Ejercicio prensa = new Ejercicio("Prensa", 3, 12, 2);
         ejercicioList.add(prensa);
-        Ejercicio zancadasMultipower = new Ejercicio(3, 10, 0);
+        Ejercicio zancadasMultipower = new Ejercicio("Jalon tras Nuca", 3, 10, 0);
         ejercicioList.add(zancadasMultipower);
 
-        Musculo cuadriceps = new Musculo(ejercicioList);
+        Musculo cuadriceps = new Musculo("Cuadriceps", ejercicioList);
         musculoList.add(cuadriceps);
 
-        rutinas.child(rutina2.getKey()).child("Cuadriceps").child("Extension de Cuadriceps").setValue(ejercicioList.get(0));
-        rutinas.child(rutina2.getKey()).child("Cuadriceps").child("Sentadillas").setValue(ejercicioList.get(1));
-        rutinas.child(rutina2.getKey()).child("Cuadriceps").child("Prensa").setValue(ejercicioList.get(2));
-        rutinas.child(rutina2.getKey()).child("Cuadriceps").child("Jalon tras Nuca").setValue(ejercicioList.get(3));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(cuadriceps.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 8
         ejercicioList = new ArrayList<>();
 
-        Ejercicio femoralTumbado = new Ejercicio(5, 12, 2);
+        Ejercicio femoralTumbado = new Ejercicio("Femoral Tumbado", 5, 12, 2);
         ejercicioList.add(femoralTumbado);
 
-        Musculo femoral = new Musculo(ejercicioList);
+        Musculo femoral = new Musculo("Femoral", ejercicioList);
         musculoList.add(femoral);
 
-        rutinas.child(rutina2.getKey()).child("Femoral").child("Femoral Tumbado").setValue(ejercicioList.get(0));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(femoral.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 9
         ejercicioList = new ArrayList<>();
 
-        Ejercicio gemelosMaquina = new Ejercicio(5, 12, 1);
+        Ejercicio gemelosMaquina = new Ejercicio("Gemelos sentado en Maquina", 5, 12, 1);
         ejercicioList.add(gemelosMaquina);
 
-        Musculo gemelos = new Musculo(ejercicioList);
+        Musculo gemelos = new Musculo("Gemelos", ejercicioList);
         musculoList.add(gemelos);
 
-        rutinas.child(rutina2.getKey()).child("Gemelos").child("Gemelos sentado en Maquina").setValue(ejercicioList.get(0));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(gemelos.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 10
         ejercicioList = new ArrayList<>();
 
-        Ejercicio elevacionesTronco = new Ejercicio(4, 20, 1);
+        Ejercicio elevacionesTronco = new Ejercicio("Elevaciones de Tronco", 4, 20, 1);
         ejercicioList.add(elevacionesTronco);
-        Ejercicio elevacionesPiernas = new Ejercicio(4, 20, 1);
+        Ejercicio elevacionesPiernas = new Ejercicio("Elevaciones de Piernas", 4, 20, 1);
         ejercicioList.add(elevacionesPiernas);
 
-        Musculo abdominales = new Musculo(ejercicioList);
+        Musculo abdominales = new Musculo("Abdominales", ejercicioList);
         musculoList.add(abdominales);
 
-        rutinas.child(rutina2.getKey()).child("Abdominales").child("Elevaciones de Tronco").setValue(ejercicioList.get(0));
-        rutinas.child(rutina2.getKey()).child("Abdominales").child("Elevaciones de Piernas").setValue(ejercicioList.get(1));
-
-//        Rutina rutina = new Rutina(rutina2.getKey(), musculoList);
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina2.getKey()).child(abdominales.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         return musculoList;
     }
@@ -449,164 +417,155 @@ public class RutinasActivity extends AppCompatActivity {
         ejercicioList = new ArrayList<>();
 
         //Grupo 1
-        Ejercicio pressBarra = new Ejercicio(4, 12, 2);
+        Ejercicio pressBarra = new Ejercicio("Press inclinado con barra",4, 12, 2);
         ejercicioList.add(pressBarra);
-        Ejercicio pressMancuernas = new Ejercicio(3, 10, 2);
+        Ejercicio pressMancuernas = new Ejercicio("Press banca con mancuernas", 3, 10, 2);
         ejercicioList.add(pressMancuernas);
-        Ejercicio aperturasInclinadas = new Ejercicio(3, 15, 1.30);
+        Ejercicio aperturasInclinadas = new Ejercicio("Aperturas inclinadas 15º", 3, 15, 1.30);
         ejercicioList.add(aperturasInclinadas);
-        Ejercicio peckDeck = new Ejercicio(3, 12, 1.30);
+        Ejercicio peckDeck = new Ejercicio("Peck deck", 3, 12, 1.30);
         ejercicioList.add(peckDeck);
 
-        Musculo pectoral = new Musculo(ejercicioList);
+        Musculo pectoral = new Musculo("Pectoral", ejercicioList);
         musculoList.add(pectoral);
 
-        rutinas.child(rutina3.getKey()).child("Pectoral").child("Press inclinado con barra").setValue(ejercicioList.get(0));
-        rutinas.child(rutina3.getKey()).child("Pectoral").child("Press banca con mancuernas").setValue(ejercicioList.get(1));
-        rutinas.child(rutina3.getKey()).child("Pectoral").child("Aperturas inclinadas 15º").setValue(ejercicioList.get(2));
-        rutinas.child(rutina3.getKey()).child("Pectoral").child("Peck deck").setValue(ejercicioList.get(3));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(pectoral.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
 //        //Grupo 2
         ejercicioList = new ArrayList<>();
 
-        Ejercicio pressFrontal = new Ejercicio(4, 12, 2);
+        Ejercicio pressFrontal = new Ejercicio("Press Frontal en Maquina", 4, 12, 2);
         ejercicioList.add(pressFrontal);
-        Ejercicio elevacionesLateralPolea = new Ejercicio(4, 10, 0);
+        Ejercicio elevacionesLateralPolea = new Ejercicio("Elevaciones Laterales en Polea", 4, 10, 0);
         ejercicioList.add(elevacionesLateralPolea);
-        Ejercicio pressNuca = new Ejercicio(3, 10, 2);
+        Ejercicio pressNuca = new Ejercicio("Press Tras Nuca", 3, 10, 2);
         ejercicioList.add(pressNuca);
 
-        Musculo hombroFrontal = new Musculo(ejercicioList);
+        Musculo hombroFrontal = new Musculo("Hombro Frontal", ejercicioList);
         musculoList.add(hombroFrontal);
 
-        rutinas.child(rutina3.getKey()).child("Hombro Frontal").child("Press Frontal en Maquina").setValue(ejercicioList.get(0));
-        rutinas.child(rutina3.getKey()).child("Hombro Frontal").child("Elevaciones Laterales en Polea").setValue(ejercicioList.get(1));
-        rutinas.child(rutina3.getKey()).child("Hombro Frontal").child("Press Tras Nuca").setValue(ejercicioList.get(2));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(hombroFrontal.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 3
         ejercicioList = new ArrayList<>();
 
-        Ejercicio tricepsPolea = new Ejercicio(4, 12, 1.30);
+        Ejercicio tricepsPolea = new Ejercicio("Triceps en Polea", 4, 12, 1.30);
         ejercicioList.add(tricepsPolea);
-        Ejercicio pressFrances = new Ejercicio(4, 12, 1.30);
+        Ejercicio pressFrances = new Ejercicio("Press Frances en Polea", 4, 12, 1.30);
         ejercicioList.add(pressFrances);
 
-        Musculo triceps = new Musculo(ejercicioList);
+        Musculo triceps = new Musculo("Triceps", ejercicioList);
         musculoList.add(triceps);
 
-        rutinas.child(rutina3.getKey()).child("Triceps").child("Triceps en Polea").setValue(ejercicioList.get(0));
-        rutinas.child(rutina3.getKey()).child("Triceps").child("Press Frances en Polea").setValue(ejercicioList.get(1));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(triceps.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 4
         ejercicioList = new ArrayList<>();
 
-        Ejercicio jalonPecho = new Ejercicio(4, 12, 2);
+        Ejercicio jalonPecho = new Ejercicio("Jalon al Pecho", 4, 12, 2);
         ejercicioList.add(jalonPecho);
-        Ejercicio remoBajoPolea = new Ejercicio(4, 10, 1.30);
+        Ejercicio remoBajoPolea = new Ejercicio("Remo Bajo en Polea", 4, 10, 1.30);
         ejercicioList.add(remoBajoPolea);
-        Ejercicio jalonPechoInvertido = new Ejercicio(4, 10, 2);
+        Ejercicio jalonPechoInvertido = new Ejercicio("Jalon al Pecho Invertido", 4, 10, 2);
         ejercicioList.add(jalonPechoInvertido);
-        Ejercicio jalonNuca = new Ejercicio(3, 12, 2);
+        Ejercicio jalonNuca = new Ejercicio("Jalon tras Nuca", 3, 12, 2);
         ejercicioList.add(jalonNuca);
 
-        Musculo dorsal = new Musculo(ejercicioList);
+        Musculo dorsal = new Musculo("Dorsal", ejercicioList);
         musculoList.add(dorsal);
 
-
-        rutinas.child(rutina3.getKey()).child("Dorsal").child("Jalon al Pecho").setValue(ejercicioList.get(0));
-        rutinas.child(rutina3.getKey()).child("Dorsal").child("Remo Bajo en Polea").setValue(ejercicioList.get(1));
-        rutinas.child(rutina3.getKey()).child("Dorsal").child("Jalon al Pecho Invertido").setValue(ejercicioList.get(2));
-        rutinas.child(rutina3.getKey()).child("Dorsal").child("Jalon tras Nuca").setValue(ejercicioList.get(3));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(dorsal.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 5
         ejercicioList = new ArrayList<>();
 
-        Ejercicio pajarosMaquina = new Ejercicio(4, 12, 1.30);
+        Ejercicio pajarosMaquina = new Ejercicio("Pajaros en MAquina", 4, 12, 1.30);
         ejercicioList.add(pajarosMaquina);
-        Ejercicio encogimientosMancuernas = new Ejercicio(3, 12, 1.15);
+        Ejercicio encogimientosMancuernas = new Ejercicio("Encogimientos con Mancuernas", 3, 12, 1.15);
         ejercicioList.add(encogimientosMancuernas);
 
-        Musculo hombrosPosterior = new Musculo(ejercicioList);
+        Musculo hombrosPosterior = new Musculo("Hombro Posterior", ejercicioList);
         musculoList.add(hombrosPosterior);
 
-        rutinas.child(rutina3.getKey()).child("Hombros Posterior").child("Pajaros en MAquina").setValue(ejercicioList.get(0));
-        rutinas.child(rutina3.getKey()).child("Hombros Posterior").child("Encogimientos con Mancuernas").setValue(ejercicioList.get(1));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(hombrosPosterior.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 6
         ejercicioList = new ArrayList<>();
 
-        Ejercicio curlBarraPolea = new Ejercicio(4, 12, 1);
+        Ejercicio curlBarraPolea = new Ejercicio("Curl con Barra en Polea", 4, 12, 1);
         ejercicioList.add(curlBarraPolea);
-        Ejercicio curlMancuernas = new Ejercicio(4, 12, 1);
+        Ejercicio curlMancuernas = new Ejercicio("Curl Alterno con Mancuernas", 4, 12, 1);
         ejercicioList.add(curlMancuernas);
 
-        Musculo biceps = new Musculo(ejercicioList);
+        Musculo biceps = new Musculo("Biceps", ejercicioList);
         musculoList.add(biceps);
 
-        rutinas.child(rutina3.getKey()).child("Biceps").child("Curl con Barra en Polea").setValue(ejercicioList.get(0));
-        rutinas.child(rutina3.getKey()).child("Biceps").child("Curl Alterno con Mancuernas").setValue(ejercicioList.get(1));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(biceps.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 7
         ejercicioList = new ArrayList<>();
 
-        Ejercicio extensionCuadriceps = new Ejercicio(4, 15, 2);
+        Ejercicio extensionCuadriceps = new Ejercicio("Extension de Cuadriceps", 4, 15, 2);
         ejercicioList.add(extensionCuadriceps);
-        Ejercicio sentadilla = new Ejercicio(4, 12, 2);
+        Ejercicio sentadilla = new Ejercicio("Sentadillas", 4, 12, 2);
         ejercicioList.add(sentadilla);
-        Ejercicio prensa = new Ejercicio(3, 12, 2);
+        Ejercicio prensa = new Ejercicio("Prensa", 3, 12, 2);
         ejercicioList.add(prensa);
-        Ejercicio zancadasMultipower = new Ejercicio(3, 10, 0);
+        Ejercicio zancadasMultipower = new Ejercicio("Jalon tras Nuca", 3, 10, 0);
         ejercicioList.add(zancadasMultipower);
 
-        Musculo cuadriceps = new Musculo(ejercicioList);
+        Musculo cuadriceps = new Musculo("Cuadriceps", ejercicioList);
         musculoList.add(cuadriceps);
 
-        rutinas.child(rutina3.getKey()).child("Cuadriceps").child("Extension de Cuadriceps").setValue(ejercicioList.get(0));
-        rutinas.child(rutina3.getKey()).child("Cuadriceps").child("Sentadillas").setValue(ejercicioList.get(1));
-        rutinas.child(rutina3.getKey()).child("Cuadriceps").child("Prensa").setValue(ejercicioList.get(2));
-        rutinas.child(rutina3.getKey()).child("Cuadriceps").child("Jalon tras Nuca").setValue(ejercicioList.get(3));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(cuadriceps.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 8
         ejercicioList = new ArrayList<>();
 
-        Ejercicio femoralTumbado = new Ejercicio(5, 12, 2);
+        Ejercicio femoralTumbado = new Ejercicio("Femoral Tumbado", 5, 12, 2);
         ejercicioList.add(femoralTumbado);
 
-        Musculo femoral = new Musculo(ejercicioList);
+        Musculo femoral = new Musculo("Femoral", ejercicioList);
         musculoList.add(femoral);
 
-        rutinas.child(rutina3.getKey()).child("Femoral").child("Femoral Tumbado").setValue(ejercicioList.get(0));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(femoral.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 9
         ejercicioList = new ArrayList<>();
 
-        Ejercicio gemelosMaquina = new Ejercicio(5, 12, 1);
+        Ejercicio gemelosMaquina = new Ejercicio("Gemelos sentado en Maquina", 5, 12, 1);
         ejercicioList.add(gemelosMaquina);
 
-        Musculo gemelos = new Musculo(ejercicioList);
+        Musculo gemelos = new Musculo("Gemelos", ejercicioList);
         musculoList.add(gemelos);
 
-        rutinas.child(rutina3.getKey()).child("Gemelos").child("Gemelos sentado en Maquina").setValue(ejercicioList.get(0));
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(gemelos.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         //Grupo 10
         ejercicioList = new ArrayList<>();
 
-        Ejercicio elevacionesTronco = new Ejercicio(4, 20, 1);
+        Ejercicio elevacionesTronco = new Ejercicio("Elevaciones de Tronco", 4, 20, 1);
         ejercicioList.add(elevacionesTronco);
-        Ejercicio elevacionesPiernas = new Ejercicio(4, 20, 1);
+        Ejercicio elevacionesPiernas = new Ejercicio("Elevaciones de Piernas", 4, 20, 1);
         ejercicioList.add(elevacionesPiernas);
 
-        Musculo abdominales = new Musculo(ejercicioList);
+        Musculo abdominales = new Musculo("Abdominales", ejercicioList);
         musculoList.add(abdominales);
 
-        rutinas.child(rutina3.getKey()).child("Abdominales").child("Elevaciones de Tronco").setValue(ejercicioList.get(0));
-        rutinas.child(rutina3.getKey()).child("Abdominales").child("Elevaciones de Piernas").setValue(ejercicioList.get(1));
-
-//        Rutina rutina = new Rutina(rutina3.getKey(), musculoList);
+        for(Ejercicio ejercicio: ejercicioList)
+            rutinas.child(rutina3.getKey()).child(abdominales.getNombre()).child(ejercicio.getNombre()).setValue(ejercicio);
 
         return musculoList;
     }
-
 
     private int randomBgColor() {
         Random rnd = new Random();

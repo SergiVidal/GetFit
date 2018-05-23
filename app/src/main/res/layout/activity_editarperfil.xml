@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/textView"
@@ -9,7 +11,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="Ajustes" />
+        android:text="Ajustes"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/tvNombre"
@@ -18,7 +22,9 @@
         android:layout_below="@+id/textView"
         android:layout_marginTop="40dp"
         android:layout_toStartOf="@+id/textView"
-        android:text="Nombre:" />
+        android:text="Nombre:"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:id="@+id/tvApellidos"
@@ -27,7 +33,9 @@
         android:layout_alignStart="@+id/tvNombre"
         android:layout_below="@+id/tvNombre"
         android:layout_marginTop="30dp"
-        android:text="Apellidos:" />
+        android:text="Apellidos:"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:id="@+id/tvEdad"
@@ -36,7 +44,9 @@
         android:layout_below="@+id/tvApellidos"
         android:layout_alignStart="@+id/tvApellidos"
         android:layout_marginTop="30dp"
-        android:text="Edad:" />
+        android:text="Edad:"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:id="@+id/tvSexo"
@@ -45,7 +55,9 @@
         android:layout_below="@+id/tvEdad"
         android:layout_alignStart="@+id/tvEdad"
         android:layout_marginTop="30dp"
-        android:text="Sexo" />
+        android:text="Sexo"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:id="@+id/tvPeso"
@@ -54,7 +66,9 @@
         android:layout_below="@+id/tvSexo"
         android:layout_alignStart="@+id/tvSexo"
         android:layout_marginTop="30dp"
-        android:text="Peso:" />
+        android:text="Peso:"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:id="@+id/tvAltura"
@@ -63,7 +77,9 @@
         android:layout_alignStart="@+id/tvPeso"
         android:layout_below="@+id/edPeso"
         android:layout_marginTop="30dp"
-        android:text="Altura:" />
+        android:text="Altura:"
+        android:textColor="#FFFFFF"
+        />
 
     <EditText
         android:id="@+id/edNombre"
@@ -73,7 +89,9 @@
         android:layout_alignBottom="@+id/tvNombre"
         android:layout_alignStart="@+id/edApellidos"
         android:hint="Nombre"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        />
 
     <EditText
         android:id="@+id/edApellidos"
@@ -83,7 +101,9 @@
         android:layout_alignBottom="@+id/tvApellidos"
         android:layout_toEndOf="@+id/textView"
         android:hint="Apellidos"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        />
 
     <EditText
         android:id="@+id/edEdad"
@@ -94,7 +114,9 @@
         android:layout_toEndOf="@+id/textView"
         android:hint="Edad"
         android:textSize="14sp"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        />
 
     <EditText
         android:id="@+id/edSexo"
@@ -104,7 +126,9 @@
         android:layout_alignBottom="@+id/tvSexo"
         android:layout_alignStart="@+id/edEdad"
         android:hint="Sexo"
-        android:textSize="14sp"/>
+        android:textSize="14sp"
+        android:textColor="#FFFFFF"
+        />
 
     <EditText
         android:id="@+id/edPeso"
@@ -115,7 +139,9 @@
         android:layout_alignStart="@+id/edSexo"
         android:hint="Peso"
         android:textSize="14sp"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        />
 
     <EditText
         android:id="@+id/edAltura"
@@ -126,7 +152,9 @@
         android:layout_alignStart="@+id/edPeso"
         android:hint="Altura"
         android:textSize="14sp"
-        android:inputType="number" />
+        android:inputType="number"
+        android:textColor="#FFFFFF"
+        />
 
     <Button
         android:id="@+id/btnSave"

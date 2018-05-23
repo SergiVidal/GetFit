@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,7 +31,8 @@ import vidal.sergi.getfit.Objetos.Usuario;
 public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
-    Button btnLogin, btnRegistrar;
+    TextView btnRegistrar;
+    Button btnLogin;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference usersRef = database.getReference(FirebaseReferences.USERS);
     String emailRegistro, passwordRegistro;

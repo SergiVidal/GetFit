@@ -1,25 +1,28 @@
-
-
-
-
-
 package vidal.sergi.getfit.Objetos;
-
-import android.media.Image;
 
 /**
  * Created by alu2011543 on 23/03/2018.
  */
 
 public class Ejercicio {
+    private String nombre;
     private int series;
     private int repeticiones;
     private double descanso;
 
-    public Ejercicio(int series, int repeticiones, double descanso) {
+    public Ejercicio(String nombre, int series, int repeticiones, double descanso) {
+        this.nombre = nombre;
         this.series = series;
         this.repeticiones = repeticiones;
         this.descanso = descanso;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getSeries() {
@@ -49,7 +52,8 @@ public class Ejercicio {
     @Override
     public String toString() {
         return "Ejercicio{" +
-                "series=" + series +
+                "nombre='" + nombre + '\'' +
+                ", series=" + series +
                 ", repeticiones=" + repeticiones +
                 ", descanso=" + descanso +
                 '}';

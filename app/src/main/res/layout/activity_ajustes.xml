@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/ajustes"
@@ -13,6 +14,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp"
         android:text="Ajustes"
+        android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
     <TextView
@@ -23,6 +25,7 @@
         android:layout_marginTop="12dp"
         android:layout_toStartOf="@+id/ajustes"
         android:text="Cuenta"
+        android:textColor="#FFFFFF"
         android:textSize="18sp" />
 
     <TextView
@@ -33,6 +36,7 @@
         android:layout_below="@+id/cuenta"
         android:layout_marginTop="23dp"
         android:text="Editar Perfil"
+        android:textColor="#FFFFFF"
         android:onClick="onClick"
         android:clickable="true"
         android:focusable="true" />
@@ -45,6 +49,7 @@
         android:layout_below="@+id/editarPerfil"
         android:layout_marginTop="24dp"
         android:text="Configuración"
+        android:textColor="#FFFFFF"
         android:textSize="18sp" />
 
     <TextView
@@ -54,6 +59,7 @@
         android:layout_alignStart="@+id/configuracion"
         android:layout_below="@+id/configuracion"
         android:layout_marginTop="24dp"
+        android:textColor="#FFFFFF"
         android:text="Idioma" />
 
     <TextView
@@ -63,6 +69,7 @@
         android:layout_alignStart="@+id/idioma"
         android:layout_below="@+id/idioma"
         android:layout_marginTop="21dp"
+        android:textColor="#FFFFFF"
         android:text="Notificaciones" />
 
     <TextView
@@ -72,6 +79,7 @@
         android:layout_alignStart="@+id/notificaciones"
         android:layout_below="@+id/notificaciones"
         android:layout_marginTop="17dp"
+        android:textColor="#FFFFFF"
         android:text="Información"
         android:textSize="18sp" />
 
@@ -82,7 +90,9 @@
         android:layout_alignStart="@+id/informacion"
         android:layout_below="@+id/informacion"
         android:layout_marginTop="23dp"
-        android:text="Política de privacidad" />
+        android:text="Política de privacidad"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:id="@+id/anuncios"
@@ -91,7 +101,9 @@
         android:layout_alignStart="@+id/politica"
         android:layout_below="@+id/politica"
         android:layout_marginTop="18dp"
-        android:text="Anuncios" />
+        android:text="Anuncios"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:id="@+id/version"
@@ -100,7 +112,9 @@
         android:layout_alignStart="@+id/anuncios"
         android:layout_below="@+id/anuncios"
         android:layout_marginTop="16dp"
-        android:text="Versión" />
+        android:text="Versión"
+        android:textColor="#FFFFFF"
+        />
 
     <TextView
         android:id="@+id/ayuda"
@@ -109,17 +123,21 @@
         android:layout_alignStart="@+id/version"
         android:layout_below="@+id/version"
         android:layout_marginTop="16dp"
-        android:text="Ayuda" />
+        android:text="Ayuda"
+        android:textColor="#FFFFFF"
+        />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/colorPrimary"
+        app:itemBackground="@color/colorNavBar"
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
         app:menu="@menu/bottom_navigation_main"
         tools:layout_editor_absoluteX="35dp"
-        tools:layout_editor_absoluteY="513dp" />
+        tools:layout_editor_absoluteY="513dp"
+        android:textColor="#FFFFFF"
+        />
 </RelativeLayout>

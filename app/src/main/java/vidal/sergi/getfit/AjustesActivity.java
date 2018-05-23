@@ -42,9 +42,9 @@ public class AjustesActivity extends AppCompatActivity{
                         startActivity(intent);
                         break;
                     case R.id.action_dietas:
-                        //Intent intent2 = new Intent(HomeActivity.this,DietasActivity.class);
-                        //startActivity(intent2);
-                        // Toast.makeText(HomeActivity.this,"Action remove clicked",Toast.LENGTH_SHORT).show();
+                        intent = new Intent(AjustesActivity.this, DietasActivity.class);
+                        intent.putExtra("user", username);
+                        startActivity(intent);
                         break;
                     case R.id.action_ajustes:
                         intent = new Intent(AjustesActivity.this, AjustesActivity.class);

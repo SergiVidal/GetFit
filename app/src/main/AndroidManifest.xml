@@ -19,6 +19,7 @@
         <activity android:name=".RegistroActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".RutinasActivity" />
+        <activity android:name=".DietasActivity" />
         <activity android:name=".AjustesActivity" />
         <activity android:name=".EditarPerfilActivity" />
 
