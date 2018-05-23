@@ -6,7 +6,6 @@ package vidal.sergi.getfit.Objetos;
 
 public class FirebaseReferences {
     public static final String USERS = "users";
-    public static final String EJERCICIOS = "ejercicios";
     public static final String RUTINA1 = "Fibrar";
     public static final String RUTINA2 = "Tonificar";
     public static final String RUTINA3 = "Muscular";

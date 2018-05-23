@@ -1,3 +1,8 @@
+
+
+
+
+
 package vidal.sergi.getfit.Objetos;
 
 import android.media.Image;

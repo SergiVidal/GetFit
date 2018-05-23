@@ -12,7 +12,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="Rutinas" />
+        android:text="Lista de Rutinas"
+        android:textSize="30sp" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -29,7 +30,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvRutina"
         android:layout_width="match_parent"
-        android:layout_height="388dp"
+        android:layout_height="430dp"
         android:layout_above="@+id/bottom_navigation"
         android:layout_alignParentStart="true" />
 

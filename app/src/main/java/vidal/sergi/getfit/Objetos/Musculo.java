@@ -10,21 +10,25 @@ import java.util.List;
 
 public class Musculo {
 
-    private String nombre;
+//    private String nombre;
     private List<Ejercicio> ejercicioList;
 
-    public Musculo(String nombre, List<Ejercicio> ejercicioList) {
-        this.nombre = nombre;
+    public Musculo(List<Ejercicio> ejercicioList) {
         this.ejercicioList = ejercicioList;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+    //    public Musculo(String nombre, List<Ejercicio> ejercicioList) {
+//        this.nombre = nombre;
+//        this.ejercicioList = ejercicioList;
+//    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+//    public String getNombre() {
+//        return nombre;
+//    }
+//
+//    public void setNombre(String nombre) {
+//        this.nombre = nombre;
+//    }
 
     public List<Ejercicio> getEjercicioList() {
         return ejercicioList;
@@ -37,10 +41,17 @@ public class Musculo {
     @Override
     public String toString() {
         return "Musculo{" +
-                "nombre='" + nombre + '\'' +
-                ", ejercicioList=" + ejercicioList +
+                "ejercicioList=" + ejercicioList +
                 '}';
     }
+
+    //    @Override
+//    public String toString() {
+//        return "Musculo{" +
+//                "nombre='" + nombre + '\'' +
+//                ", ejercicioList=" + ejercicioList +
+//                '}';
+//    }
 
     public Ejercicio getEjercicio(int pos){
         return this.ejercicioList.get(pos);
