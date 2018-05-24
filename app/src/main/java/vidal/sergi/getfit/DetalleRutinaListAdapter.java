@@ -11,18 +11,16 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import vidal.sergi.getfit.Objetos.Rutina;
-
 public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutinaListAdapter.ViewHolder> {
 
     private List<String> musculosList;
-    private List<Integer> colorList;
+    private List<Integer> fotosList;
 
 
-    DetalleRutinaListAdapter(List<String> musculosList, List<Integer> colorList){
+    DetalleRutinaListAdapter(List<String> musculosList, List<Integer> fotosList){
         super();
         this.musculosList = musculosList;
-        this.colorList = colorList;
+        this.fotosList = fotosList;
     }
 
     //Crear i asignar el ViewHolder amb els components
@@ -57,7 +55,7 @@ public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutina
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tvNombreRutina.setText(musculosList.get(position));
-        holder.frameLayout.setBackgroundColor(colorList.get(position));
+        holder.frameLayout.setBackgroundResource(fotosList.get(position));
     }
 
     //Retornar la cantitad de players

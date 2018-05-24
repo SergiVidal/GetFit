@@ -35,7 +35,7 @@ public class DetalleDietaActivity extends AppCompatActivity {
         tvNombreComida = findViewById(R.id.tvNombreDieta);
 
         final List<String> comidasList = new ArrayList<>();
-        final List<Integer> colorList = new ArrayList<>();
+        final List<Integer> fotosList = new ArrayList<>();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         String nombreRutina = getIntent().getExtras().getString("nombreDieta");
@@ -46,10 +46,15 @@ public class DetalleDietaActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     comidasList.add(childDataSnapshot.getKey());
-                    colorList.add(randomBgColor());
                 }
+                fotosList.add(R.drawable.almuerzo);
+                fotosList.add(R.drawable.cena);
+                fotosList.add(R.drawable.comida);
+                fotosList.add(R.drawable.desayuno);
+                fotosList.add(R.drawable.merienda);
+
                 Log.v("svm",""+ comidasList.toString());
-                DetalleDietaListAdapter adapter = new DetalleDietaListAdapter(comidasList, colorList);
+                DetalleDietaListAdapter adapter = new DetalleDietaListAdapter(comidasList, fotosList);
                 recyclerView.setLayoutManager (new LinearLayoutManager(DetalleDietaActivity.this, LinearLayoutManager.HORIZONTAL, false));
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(adapter);

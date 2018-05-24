@@ -14,13 +14,13 @@ import java.util.List;
 public class DetalleDietaListAdapter extends RecyclerView.Adapter<DetalleDietaListAdapter.ViewHolder> {
 
     private List<String> comidasList;
-    private List<Integer> colorList;
+    private List<Integer> fotosList;
 
 
-    DetalleDietaListAdapter(List<String> comidasList, List<Integer> colorList){
+    DetalleDietaListAdapter(List<String> comidasList, List<Integer> fotosList){
         super();
         this.comidasList = comidasList;
-        this.colorList = colorList;
+        this.fotosList = fotosList;
     }
 
     //Crear i asignar el ViewHolder amb els components
@@ -55,7 +55,7 @@ public class DetalleDietaListAdapter extends RecyclerView.Adapter<DetalleDietaLi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tvNombreDieta.setText(comidasList.get(position));
-        holder.frameLayout.setBackgroundColor(colorList.get(position));
+        holder.frameLayout.setBackgroundResource(fotosList.get(position));
     }
 
     //Retornar la cantitad de players

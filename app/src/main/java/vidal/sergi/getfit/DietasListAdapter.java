@@ -57,7 +57,7 @@ public class DietasListAdapter extends RecyclerView.Adapter<DietasListAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tvNombreDieta.setText(dietaList.get(position).getNombre());
-        holder.frameLayout.setBackgroundColor(dietaList.get(position).getBgColor());
+        holder.frameLayout.setBackgroundResource(dietaList.get(position).getImg());
 
     }
 

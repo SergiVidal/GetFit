@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frameLayoutDietas"
-    android:layout_width="match_parent"
+    android:layout_width="330dp"
     android:layout_height="match_parent"
     android:layout_margin="15dp">
 
@@ -20,6 +20,10 @@
         android:textColor="#ffffff"
         android:textSize="36sp"
         android:textStyle="bold"
+        android:shadowColor="@color/colorBlack"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="20"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

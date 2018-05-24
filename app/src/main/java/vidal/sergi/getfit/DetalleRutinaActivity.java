@@ -35,7 +35,7 @@ public class DetalleRutinaActivity extends AppCompatActivity {
         tvNombreMusculo = findViewById(R.id.tvNombreRutina);
 
         final List<String> musculosList = new ArrayList<>();
-        final List<Integer> colorList = new ArrayList<>();
+        final List<Integer> fotosList = new ArrayList<>();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         String nombreRutina = getIntent().getExtras().getString("nombreRutina");
@@ -46,10 +46,21 @@ public class DetalleRutinaActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
                     musculosList.add(childDataSnapshot.getKey());
-                    colorList.add(randomBgColor());
                 }
+                fotosList.add(R.drawable.abdominales);
+                fotosList.add(R.drawable.biceps);
+                fotosList.add(R.drawable.cuadriceps);
+                fotosList.add(R.drawable.dorsales);
+                fotosList.add(R.drawable.femorales);
+                fotosList.add(R.drawable.gemelos);
+                fotosList.add(R.drawable.hombrofrontal);
+                fotosList.add(R.drawable.hombroposterior);
+                fotosList.add(R.drawable.pectoral);
+                fotosList.add(R.drawable.triceps);
+
+
                 Log.v("svm",""+ musculosList.toString());
-                DetalleRutinaListAdapter adapter = new DetalleRutinaListAdapter(musculosList, colorList);
+                DetalleRutinaListAdapter adapter = new DetalleRutinaListAdapter(musculosList, fotosList);
                 recyclerView.setLayoutManager (new LinearLayoutManager(DetalleRutinaActivity.this,LinearLayoutManager.HORIZONTAL, false));
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(adapter);

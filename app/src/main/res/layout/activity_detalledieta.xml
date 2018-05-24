@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@color/colorBg"
+    >
 
     <TextView
         android:id="@+id/textView2"
@@ -15,7 +16,11 @@
         android:layout_marginTop="40dp"
         android:text="Lista de Comidas"
         android:textColor="#FFFFFF"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:shadowColor="@color/colorBlack"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="20"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvDetalleDieta"

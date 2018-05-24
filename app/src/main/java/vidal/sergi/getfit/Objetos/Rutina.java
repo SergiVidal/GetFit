@@ -4,22 +4,22 @@ import java.util.List;
 
 public class Rutina {
 
-    private int bgColor;
+    private int img;
     private String nombre;
     private List<Musculo> musculoList;
 
-    public Rutina(int bgColor, String nombre, List<Musculo> musculoList) {
-        this.bgColor = bgColor;
+    public Rutina(int img, String nombre, List<Musculo> musculoList) {
+        this.img = img;
         this.nombre = nombre;
         this.musculoList = musculoList;
     }
 
-    public int getBgColor() {
-        return bgColor;
+    public int getImg() {
+        return img;
     }
 
-    public void setBgColor(int bgColor) {
-        this.bgColor = bgColor;
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public String getNombre() {

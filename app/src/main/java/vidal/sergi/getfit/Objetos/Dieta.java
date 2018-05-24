@@ -4,22 +4,22 @@ import java.util.List;
 
 public class Dieta {
 
-    private int bgColor;
+    private int img;
     private String nombre;
     private List<Comida> comidaList;
 
-    public Dieta(int bgColor, String nombre, List<Comida> comidaList) {
-        this.bgColor = bgColor;
+    public Dieta(int img, String nombre, List<Comida> comidaList) {
+        this.img = img;
         this.nombre = nombre;
         this.comidaList = comidaList;
     }
 
-    public int getBgColor() {
-        return bgColor;
+    public int getImg() {
+        return img;
     }
 
-    public void setBgColor(int bgColor) {
-        this.bgColor = bgColor;
+    public void setImg(int img) {
+        this.img = img;
     }
 
     public String getNombre() {

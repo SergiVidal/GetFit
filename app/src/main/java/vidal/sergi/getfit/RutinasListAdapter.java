@@ -55,7 +55,8 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tvNombreRutina.setText(rutinaList.get(position).getNombre());
-        holder.frameLayout.setBackgroundColor(rutinaList.get(position).getBgColor());
+        holder.frameLayout.setBackgroundResource(rutinaList.get(position).getImg());
+        //Bindejar Foto?
     }
 
     //Retornar la cantitad de players
