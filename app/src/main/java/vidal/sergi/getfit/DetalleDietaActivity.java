@@ -50,7 +50,7 @@ public class DetalleDietaActivity extends AppCompatActivity {
                 }
                 Log.v("svm",""+ comidasList.toString());
                 DetalleDietaListAdapter adapter = new DetalleDietaListAdapter(comidasList, colorList);
-                recyclerView.setLayoutManager (new LinearLayoutManager(DetalleDietaActivity.this));
+                recyclerView.setLayoutManager (new LinearLayoutManager(DetalleDietaActivity.this, LinearLayoutManager.HORIZONTAL, false));
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(adapter);
             }

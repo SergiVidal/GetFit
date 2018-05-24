@@ -49,7 +49,7 @@ public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutina
     //Al crear el ViewHolder, inflar el layout
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rutina, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.detalle_rutina, parent, false);
         return new ViewHolder(view);
     }
 

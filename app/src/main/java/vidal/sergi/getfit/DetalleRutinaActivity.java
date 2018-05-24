@@ -50,7 +50,7 @@ public class DetalleRutinaActivity extends AppCompatActivity {
                 }
                 Log.v("svm",""+ musculosList.toString());
                 DetalleRutinaListAdapter adapter = new DetalleRutinaListAdapter(musculosList, colorList);
-                recyclerView.setLayoutManager (new LinearLayoutManager(DetalleRutinaActivity.this));
+                recyclerView.setLayoutManager (new LinearLayoutManager(DetalleRutinaActivity.this,LinearLayoutManager.HORIZONTAL, false));
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(adapter);
             }

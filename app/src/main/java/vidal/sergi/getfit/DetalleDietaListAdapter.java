@@ -47,7 +47,7 @@ public class DetalleDietaListAdapter extends RecyclerView.Adapter<DetalleDietaLi
     //Al crear el ViewHolder, inflar el layout
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dieta, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.detalle_dieta, parent, false);
         return new ViewHolder(view);
     }
 
