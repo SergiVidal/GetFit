@@ -25,19 +25,19 @@ public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutina
 
     //Crear i asignar el ViewHolder amb els components
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNombreRutina;
+        TextView tvNombreMusculo;
         FrameLayout frameLayout;
 
         public ViewHolder(View itemVIew) {
             super(itemVIew);
-            tvNombreRutina = itemVIew.findViewById(R.id.tvNombreRutina);
+            tvNombreMusculo = itemVIew.findViewById(R.id.tvNombreMusculo);
             frameLayout = itemVIew.findViewById(R.id.frameLayoutRutinas);
             frameLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, DetalleRutinaActivity.class);
-                    intent.putExtra("nombreRutina", tvNombreRutina.getText());
+                    Intent intent = new Intent(context, EjerciciosActivity.class);
+                    intent.putExtra("nombreMusculo", tvNombreMusculo.getText());
                     context.startActivity(intent);
                 }
             });
@@ -54,7 +54,7 @@ public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutina
     //Bindejar l'informació del JSON als components
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvNombreRutina.setText(musculosList.get(position));
+        holder.tvNombreMusculo.setText(musculosList.get(position));
         holder.frameLayout.setBackgroundResource(fotosList.get(position));
     }
 

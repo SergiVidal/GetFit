@@ -10,6 +10,9 @@ public class Ejercicio {
     private int repeticiones;
     private double descanso;
 
+    public Ejercicio() {
+    }
+
     public Ejercicio(String nombre, int series, int repeticiones, double descanso) {
         this.nombre = nombre;
         this.series = series;

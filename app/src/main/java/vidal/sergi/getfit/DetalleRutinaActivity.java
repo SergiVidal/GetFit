@@ -39,6 +39,7 @@ public class DetalleRutinaActivity extends AppCompatActivity {
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         String nombreRutina = getIntent().getExtras().getString("nombreRutina");
+        Log.v("svm",nombreRutina);
         DatabaseReference rutinas = database.getReference(FirebaseReferences.RUTINAS);
 
         rutinas.child(nombreRutina).addValueEventListener(new ValueEventListener() {
@@ -58,10 +59,8 @@ public class DetalleRutinaActivity extends AppCompatActivity {
                 fotosList.add(R.drawable.pectoral);
                 fotosList.add(R.drawable.triceps);
 
-
-                Log.v("svm",""+ musculosList.toString());
                 DetalleRutinaListAdapter adapter = new DetalleRutinaListAdapter(musculosList, fotosList);
-                recyclerView.setLayoutManager (new LinearLayoutManager(DetalleRutinaActivity.this,LinearLayoutManager.HORIZONTAL, false));
+                recyclerView.setLayoutManager (new LinearLayoutManager(DetalleRutinaActivity.this));
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 recyclerView.setAdapter(adapter);
             }

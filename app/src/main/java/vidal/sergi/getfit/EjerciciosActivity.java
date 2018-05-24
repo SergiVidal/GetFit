@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,45 +19,44 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import vidal.sergi.getfit.Objetos.Ejercicio;
 import vidal.sergi.getfit.Objetos.FirebaseReferences;
 
-public class DetalleDietaActivity extends AppCompatActivity {
+public class EjerciciosActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    TextView tvNombreComida;
+    GridView gridView;
+    TextView tvNombreEjercicio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalledieta);
+        setContentView(R.layout.activity_ejercicios);
 
-        recyclerView = findViewById(R.id.rvDetalleDieta);
-        tvNombreComida = findViewById(R.id.tvNombreDieta);
+        gridView = findViewById(R.id.gvRutina);
+        tvNombreEjercicio = findViewById(R.id.tvNombreEjercicio);
 
-        final List<String> comidasList = new ArrayList<>();
+        final List<Ejercicio> ejerciciosList = new ArrayList<>();
         final List<Integer> fotosList = new ArrayList<>();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String nombreRutina = getIntent().getExtras().getString("nombreDieta");
-        DatabaseReference rutinas = database.getReference(FirebaseReferences.DIETAS);
+        String nombreMusculo = getIntent().getExtras().getString("nombreMusculo");
+        Log.d("svm", nombreMusculo);
+        DatabaseReference rutinas = database.getReference(FirebaseReferences.RUTINAS);
+        DatabaseReference rutina = database.getReference(FirebaseReferences.RUTINA);
 
-        rutinas.child(nombreRutina).addValueEventListener(new ValueEventListener() {
+        rutinas.child(rutina.getKey()).child(nombreMusculo).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
-                    comidasList.add(childDataSnapshot.getKey());
+                    ejerciciosList.add(childDataSnapshot.getValue(Ejercicio.class));
                 }
-                fotosList.add(R.drawable.almuerzo);
-                fotosList.add(R.drawable.cena);
-                fotosList.add(R.drawable.comida);
-                fotosList.add(R.drawable.desayuno);
-                fotosList.add(R.drawable.merienda);
 
-                Log.v("svm",""+ comidasList.toString());
-                DetalleDietaListAdapter adapter = new DetalleDietaListAdapter(comidasList, fotosList);
-                recyclerView.setLayoutManager (new LinearLayoutManager(DetalleDietaActivity.this));
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                recyclerView.setAdapter(adapter);
+                for(Ejercicio ejercicio: ejerciciosList)
+                    Log.d("svm", ejercicio.toString());
+
+                EjerciciosListAdaptar adapter = new EjerciciosListAdaptar(this, ejerciciosList);
+                gridView.setAdapter(adapter);
+
             }
 
             @Override
