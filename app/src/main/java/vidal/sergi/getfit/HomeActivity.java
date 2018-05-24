@@ -14,7 +14,6 @@ import android.widget.Button;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button btnRutinas, btnAjustes;
     Intent intent;
 
     @Override

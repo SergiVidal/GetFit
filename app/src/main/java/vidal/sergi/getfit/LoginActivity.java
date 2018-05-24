@@ -31,8 +31,7 @@ import vidal.sergi.getfit.Objetos.Usuario;
 public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
-    TextView btnRegistrar;
-    Button btnLogin;
+    TextView btnRegistrar, btnLogin;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference usersRef = database.getReference(FirebaseReferences.USERS);
     String emailRegistro, passwordRegistro;

@@ -3,7 +3,6 @@ package vidal.sergi.getfit;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,32 +11,33 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import vidal.sergi.getfit.Objetos.Rutina;
+public class DetalleDietaListAdapter extends RecyclerView.Adapter<DetalleDietaListAdapter.ViewHolder> {
 
-public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.ViewHolder> {
+    private List<String> comidasList;
+    private List<Integer> colorList;
 
-    private List<Rutina> rutinaList;
 
-    RutinasListAdapter (List<Rutina> rutinaList){
+    DetalleDietaListAdapter(List<String> comidasList, List<Integer> colorList){
         super();
-        this.rutinaList = rutinaList;
+        this.comidasList = comidasList;
+        this.colorList = colorList;
     }
 
     //Crear i asignar el ViewHolder amb els components
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNombreRutina;
+        TextView tvNombreDieta;
         FrameLayout frameLayout;
 
         public ViewHolder(View itemVIew) {
             super(itemVIew);
-            tvNombreRutina = itemVIew.findViewById(R.id.tvNombreRutina);
-            frameLayout = itemVIew.findViewById(R.id.frameLayoutRutinas);
+            tvNombreDieta = itemVIew.findViewById(R.id.tvNombreDieta);
+            frameLayout = itemVIew.findViewById(R.id.frameLayoutDietas);
             frameLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, DetalleRutinaActivity.class);
-                    intent.putExtra("nombreRutina", tvNombreRutina.getText());
+                    Intent intent = new Intent(context, DetalleDietaActivity.class);
+                    intent.putExtra("nombreDieta", tvNombreDieta.getText());
                     context.startActivity(intent);
                 }
             });
@@ -47,20 +47,20 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
     //Al crear el ViewHolder, inflar el layout
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rutina, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.dieta, parent, false);
         return new ViewHolder(view);
     }
 
     //Bindejar l'informació del JSON als components
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvNombreRutina.setText(rutinaList.get(position).getNombre());
-        holder.frameLayout.setBackgroundColor(rutinaList.get(position).getBgColor());
+        holder.tvNombreDieta.setText(comidasList.get(position));
+        holder.frameLayout.setBackgroundColor(colorList.get(position));
     }
 
     //Retornar la cantitad de players
     @Override
     public int getItemCount() {
-        return rutinaList.size();
+        return comidasList.size();
     }
 }

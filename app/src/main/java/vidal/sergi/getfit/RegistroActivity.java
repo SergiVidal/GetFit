@@ -19,8 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegistroActivity extends AppCompatActivity {
 
     EditText email, password;
-    TextView btnLogin;
-    Button btnRegistrar;
+    TextView btnLogin, btnRegistrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

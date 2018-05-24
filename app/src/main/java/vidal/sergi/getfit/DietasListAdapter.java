@@ -1,5 +1,7 @@
 package vidal.sergi.getfit;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,13 +26,22 @@ public class DietasListAdapter extends RecyclerView.Adapter<DietasListAdapter.Vi
     //Crear i asignar el ViewHolder amb els components
     class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvNombreDieta;
-        FrameLayout mBackground;
+        FrameLayout frameLayout;
 
 
         public ViewHolder(View itemVIew){
             super(itemVIew);
             tvNombreDieta = itemVIew.findViewById(R.id.tvNombreDieta);
-            mBackground = itemVIew.findViewById(R.id.asd);
+            frameLayout = itemVIew.findViewById(R.id.frameLayoutDietas);
+            frameLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, DetalleDietaActivity.class);
+                    intent.putExtra("nombreDieta", tvNombreDieta.getText());
+                    context.startActivity(intent);
+                }
+            });
 
         }
     }
@@ -46,7 +57,7 @@ public class DietasListAdapter extends RecyclerView.Adapter<DietasListAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tvNombreDieta.setText(dietaList.get(position).getNombre());
-        holder.mBackground.setBackgroundColor(dietaList.get(position).getBgColor());
+        holder.frameLayout.setBackgroundColor(dietaList.get(position).getBgColor());
 
     }
 

@@ -22,7 +22,8 @@
         <activity android:name=".DietasActivity" />
         <activity android:name=".AjustesActivity" />
         <activity android:name=".EditarPerfilActivity" />
-
+        <activity android:name=".DetalleRutinaActivity" />
+        <activity android:name=".DetalleDietaActivity" />
     </application>
 
 </manifest>

@@ -11,7 +11,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -36,7 +38,6 @@ import vidal.sergi.getfit.Objetos.Rutina;
 public class RutinasActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Button btnMostrarRutina;
     TextView tvNombreRutina;
     Intent intent;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();

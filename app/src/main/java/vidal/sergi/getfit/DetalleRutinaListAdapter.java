@@ -3,7 +3,6 @@ package vidal.sergi.getfit;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +13,16 @@ import java.util.List;
 
 import vidal.sergi.getfit.Objetos.Rutina;
 
-public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.ViewHolder> {
+public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutinaListAdapter.ViewHolder> {
 
-    private List<Rutina> rutinaList;
+    private List<String> musculosList;
+    private List<Integer> colorList;
 
-    RutinasListAdapter (List<Rutina> rutinaList){
+
+    DetalleRutinaListAdapter(List<String> musculosList, List<Integer> colorList){
         super();
-        this.rutinaList = rutinaList;
+        this.musculosList = musculosList;
+        this.colorList = colorList;
     }
 
     //Crear i asignar el ViewHolder amb els components
@@ -54,13 +56,13 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
     //Bindejar l'informació del JSON als components
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.tvNombreRutina.setText(rutinaList.get(position).getNombre());
-        holder.frameLayout.setBackgroundColor(rutinaList.get(position).getBgColor());
+        holder.tvNombreRutina.setText(musculosList.get(position));
+        holder.frameLayout.setBackgroundColor(colorList.get(position));
     }
 
     //Retornar la cantitad de players
     @Override
     public int getItemCount() {
-        return rutinaList.size();
+        return musculosList.size();
     }
 }
