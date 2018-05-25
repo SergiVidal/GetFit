@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -70,14 +71,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
+                    Toast.makeText(LoginActivity.this, "Usuario logueado correctamente.", Toast.LENGTH_SHORT).show();
                     String username = emailRegistro.split("@")[0];
                     usersRef.child(username).setValue(new Usuario(" ", " ", 0, " ", 0, 0));
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     intent.putExtra("user", username);
                     startActivity(intent);
-                    Log.d("SESION", "Usuario creado correctamente");
+                    Log.d("svm", "Usuario creado correctamente");
                 }else {
-                    Log.d("SESION", task.getException().getMessage()+"");
+                    Toast.makeText(LoginActivity.this, "Usuario/Password incorrectos.", Toast.LENGTH_SHORT).show();
+                    Log.d("svm", task.getException().getMessage()+"");
+
                 }
             }
         });

@@ -40,8 +40,6 @@ public class DetalleRutinaActivity extends AppCompatActivity {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         String nombreRutina = getIntent().getExtras().getString("nombreRutina");
         Log.v("svm",nombreRutina);
-//        String idRutina = getIntent().getExtras().getString("idRutina");
-//        Log.v("svm",idRutina);
         DatabaseReference rutinas = database.getReference(FirebaseReferences.RUTINAS);
 
         rutinas.child(nombreRutina).addValueEventListener(new ValueEventListener() {

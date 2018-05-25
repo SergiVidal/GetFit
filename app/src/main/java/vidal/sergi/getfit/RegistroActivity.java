@@ -10,11 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -51,16 +55,33 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void registrar(String email, String pass){
-        Log.d("SESION", "registrar()");
+        Log.d("svm", "registrar()");
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
+                    Toast.makeText(RegistroActivity.this, "Usuario creado correctamente", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                     startActivity(intent);
-                    Log.d("SESION", "Usuario creado correctamente");
+                    Log.d("svm", "Usuario creado correctamente.");
                 }else {
-                    Log.d("SESION", task.getException().getMessage()+"");
+                    try {
+                        throw task.getException();
+                    } catch(FirebaseAuthWeakPasswordException e) {
+                        Toast.makeText(RegistroActivity.this, "Contraseña Débil", Toast.LENGTH_SHORT).show();
+                        Log.e("svm", "Contraseña Débil");
+
+                    } catch(FirebaseAuthInvalidCredentialsException e) {
+                        Toast.makeText(RegistroActivity.this, "Email inválido", Toast.LENGTH_SHORT).show();
+                        Log.e("svm", "Email inválido");
+
+                    } catch(FirebaseAuthUserCollisionException e) {
+                        Toast.makeText(RegistroActivity.this, "El usuario ya existe", Toast.LENGTH_SHORT).show();
+                        Log.e("svm", "El usuario ya existe");
+
+                    } catch(Exception e) {
+                        Log.e("svm", e.getMessage());
+                    }
                 }
             }
         });

@@ -3,6 +3,8 @@ package vidal.sergi.getfit;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +13,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,9 +44,9 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvNombreRutina;
         FrameLayout frameLayout;
-        Button btnIdRutina;
+        FloatingActionButton btnIdRutina;
 
-        public ViewHolder(View itemVIew) {
+        public ViewHolder(final View itemVIew) {
             super(itemVIew);
             tvNombreRutina = itemVIew.findViewById(R.id.tvNombreRutina);
             frameLayout = itemVIew.findViewById(R.id.frameLayoutRutinas);
@@ -52,7 +57,6 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
                     Context context = view.getContext();
                     Intent intent = new Intent(context, DetalleRutinaActivity.class);
                     intent.putExtra("nombreRutina", tvNombreRutina.getText());
-                    intent.putExtra("idRutina", String.valueOf(btnIdRutina.getText()));
                     context.startActivity(intent);
                 }
             });
@@ -60,11 +64,11 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
             btnIdRutina.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Log.d("svm", String.valueOf(btnIdRutina.getText()));
-                    btnIdRutina.setBackgroundColor(Color.GREEN);
-                    //Cambiar child "svidalmestre"
-                    usersRef.child("svidalmestre").child("idRutina").setValue(String.valueOf(btnIdRutina.getText()));
-
+                    btnIdRutina.setRippleColor(Color.RED);
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String email = user.getEmail();
+                    usersRef.child(email.split("@")[0]).child("idRutina").setValue(String.valueOf(btnIdRutina.getTag()));
+                    Toast.makeText(itemVIew.getContext(), "Ahora sigues esta rutina.", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -82,7 +86,7 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tvNombreRutina.setText(rutinaList.get(position).getNombre());
         holder.frameLayout.setBackgroundResource(rutinaList.get(position).getImg());
-        holder.btnIdRutina.setText(String.valueOf(rutinaList.get(position).getId()));
+        holder.btnIdRutina.setTag(String.valueOf(rutinaList.get(position).getId()));
 
     }
 
