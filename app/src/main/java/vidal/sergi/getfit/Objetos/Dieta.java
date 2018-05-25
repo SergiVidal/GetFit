@@ -4,14 +4,26 @@ import java.util.List;
 
 public class Dieta {
 
+    private int id;
     private int img;
     private String nombre;
     private List<Comida> comidaList;
 
-    public Dieta(int img, String nombre, List<Comida> comidaList) {
+
+
+    public Dieta(int id, int img, String nombre, List<Comida> comidaList) {
+        this.id = id;
         this.img = img;
         this.nombre = nombre;
         this.comidaList = comidaList;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getImg() {

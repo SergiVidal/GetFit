@@ -34,7 +34,6 @@ import vidal.sergi.getfit.Objetos.Musculo;
 public class DietasActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Button btnMostrarRutina;
     TextView tvNombreDieta;
     Intent intent;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -86,9 +85,9 @@ public class DietasActivity extends AppCompatActivity {
             }
         });
 
-        final Dieta ganarMusculo = new Dieta(R.drawable.dieta3, "Ganar Musculo", crearDieta1());
-        final Dieta subirPeso = new Dieta(R.drawable.dieta1, "Subir Peso", crearDieta2());
-        final Dieta bajarPeso = new Dieta(R.drawable.dieta2, "Bajar Peso", crearDieta3());
+        final Dieta ganarMusculo = new Dieta(1, R.drawable.dieta3, "Ganar Musculo", crearDieta1());
+        final Dieta subirPeso = new Dieta(2, R.drawable.dieta1, "Subir Peso", crearDieta2());
+        final Dieta bajarPeso = new Dieta(3, R.drawable.dieta2, "Bajar Peso", crearDieta3());
         dietaList = new ArrayList<>();
         dietaList.add(ganarMusculo);
         dietaList.add(subirPeso);

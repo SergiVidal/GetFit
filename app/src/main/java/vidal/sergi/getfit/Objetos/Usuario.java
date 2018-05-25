@@ -6,6 +6,7 @@ package vidal.sergi.getfit.Objetos;
 
 public class Usuario {
     int idRutina;
+    int idDieta;
     String password;
     String nombre;
     String apellidos;

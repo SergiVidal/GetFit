@@ -43,7 +43,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Usuario usuario = dataSnapshot.getValue(Usuario.class);
-                Log.d("username", usuario.toString());
+//                Log.d("username", usuario.toString());
                 edNombre.setText(usuario.getNombre());
                 edApellidos.setText(usuario.getApellidos());
                 edEdad.setText(String.valueOf(usuario.getEdad()));
@@ -85,8 +85,16 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 usuario.setSexo(sexo);
                 usuario.setPeso(peso);
                 usuario.setAltura(altura);
-                usersRef.child(username).setValue(usuario);
-                Log.d("UsuarioActualizado:", usuario.toString());
+                usersRef.child(username).child("nombre").setValue(usuario.getNombre());
+                usersRef.child(username).child("apellidos").setValue(usuario.getApellidos());
+                usersRef.child(username).child("edad").setValue(usuario.getEdad());
+                usersRef.child(username).child("sexo").setValue(usuario.getSexo());
+                usersRef.child(username).child("peso").setValue(usuario.getPeso());
+                usersRef.child(username).child("altura").setValue(usuario.getAltura());
+
+
+                Log.d("svm:", "Datos de usuario actualizados.");
+                Toast.makeText(EditarPerfilActivity.this, "Datos de usuario actualizados.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -100,7 +108,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 usuario.setPeso(peso);
                 usuario.setAltura(altura);
                 usuario.setImc(imc);
-                usersRef.child(username).setValue(usuario);
+                usersRef.child(username).child("imc").setValue(imc);
                 Toast.makeText(EditarPerfilActivity.this, "Tu IMC es: " + imc, Toast.LENGTH_SHORT).show();
 
 
