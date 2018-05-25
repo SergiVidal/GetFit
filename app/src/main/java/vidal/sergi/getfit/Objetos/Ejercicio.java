@@ -9,6 +9,7 @@ public class Ejercicio {
     private int series;
     private int repeticiones;
     private double descanso;
+    private int imagen;
 
     public Ejercicio() {
     }
@@ -18,6 +19,7 @@ public class Ejercicio {
         this.series = series;
         this.repeticiones = repeticiones;
         this.descanso = descanso;
+
     }
 
     public String getNombre() {
@@ -50,6 +52,14 @@ public class Ejercicio {
 
     public void setDescanso(double descanso) {
         this.descanso = descanso;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 
     @Override

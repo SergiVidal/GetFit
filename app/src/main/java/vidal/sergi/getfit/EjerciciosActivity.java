@@ -25,7 +25,7 @@ import vidal.sergi.getfit.Objetos.FirebaseReferences;
 public class EjerciciosActivity extends AppCompatActivity {
 
     GridView gridView;
-    TextView tvNombreEjercicio;
+    static TextView tvNM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +33,16 @@ public class EjerciciosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ejercicios);
 
         gridView = findViewById(R.id.gvRutina);
-        tvNombreEjercicio = findViewById(R.id.tvNombreEjercicio);
+        tvNM = findViewById(R.id.tvNM);
 
         final List<Ejercicio> ejerciciosList = new ArrayList<>();
         final List<Integer> fotosList = new ArrayList<>();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String nombreMusculo = getIntent().getExtras().getString("nombreMusculo");
+        final String nombreMusculo = getIntent().getExtras().getString("nombreMusculo");
         Log.d("svm", nombreMusculo);
+        tvNM.setText(nombreMusculo);
+
         DatabaseReference rutinas = database.getReference(FirebaseReferences.RUTINAS);
         DatabaseReference rutina = database.getReference(FirebaseReferences.RUTINA);
 
@@ -66,7 +68,15 @@ public class EjerciciosActivity extends AppCompatActivity {
         });
 
     }
-
+    public static String getTextFromTextView(TextView textView){
+        try{
+            return (String) textView.getText();
+        }
+        catch (Exception ex){
+            Log.d("Exception","Exception of type"+ex.getMessage());
+        }
+        return "";
+    }
     private int randomBgColor() {
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
