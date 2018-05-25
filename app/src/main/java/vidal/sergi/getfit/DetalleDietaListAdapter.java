@@ -36,7 +36,7 @@ public class DetalleDietaListAdapter extends RecyclerView.Adapter<DetalleDietaLi
                 @Override
                 public void onClick(View view) {
                     Context context = view.getContext();
-                    Intent intent = new Intent(context, DetalleDietaActivity.class);
+                    Intent intent = new Intent(context, AlimentosActivity.class);
                     intent.putExtra("nombreDieta", tvNombreDieta.getText());
                     context.startActivity(intent);
                 }

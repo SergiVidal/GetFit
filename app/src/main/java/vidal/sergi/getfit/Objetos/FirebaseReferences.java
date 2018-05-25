@@ -14,5 +14,6 @@ public class FirebaseReferences {
     public static final String DIETA1 = "Ganar Musculo";
     public static final String DIETA2 = "Subir Peso";
     public static final String DIETA3 = "Bajar Peso";
+    public static final String DIETA = "Ganar Musculo";
     public static final String DIETAS = "Dietas";
 }
