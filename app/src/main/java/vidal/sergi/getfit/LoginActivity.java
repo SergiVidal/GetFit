@@ -33,8 +33,8 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText email, password;
     TextView btnRegistrar, btnLogin;
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference usersRef = database.getReference(FirebaseReferences.USERS);
+
+
     String emailRegistro, passwordRegistro;
 
     @Override
@@ -72,10 +72,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Usuario logueado correctamente.", Toast.LENGTH_SHORT).show();
-                    String username = emailRegistro.split("@")[0];
-                    usersRef.child(username).setValue(new Usuario(" ", " ", 0, " ", 0, 0));
+
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    intent.putExtra("user", username);
+//                    intent.putExtra("user", username);
                     startActivity(intent);
                     Log.d("svm", "Usuario creado correctamente");
                 }else {

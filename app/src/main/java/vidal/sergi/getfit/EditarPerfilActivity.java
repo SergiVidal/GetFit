@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,19 +39,19 @@ public class EditarPerfilActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editarperfil);
-        final String username = getIntent().getExtras().getString("user");
-
+//        final String username = getIntent().getExtras().getString("user");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String email = user.getEmail();
+        final String username = email.split("@")[0];
         usersRef.child(username).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Usuario usuario = dataSnapshot.getValue(Usuario.class);
-//                Log.d("username", usuario.toString());
-                edNombre.setText(usuario.getNombre());
-                edApellidos.setText(usuario.getApellidos());
-                edEdad.setText(String.valueOf(usuario.getEdad()));
-                edSexo.setText(usuario.getSexo());
-                edPeso.setText(String.valueOf(usuario.getPeso()));
-                edAltura.setText(String.valueOf(usuario.getAltura()));
+                edNombre.setText(String.valueOf(dataSnapshot.child("nombre").getValue()));
+                edApellidos.setText(String.valueOf(dataSnapshot.child("apellidos").getValue()));
+                edEdad.setText(String.valueOf(dataSnapshot.child("edad").getValue()));
+                edSexo.setText(String.valueOf(dataSnapshot.child("sexo").getValue()));
+                edPeso.setText(String.valueOf(dataSnapshot.child("peso").getValue()));
+                edAltura.setText(String.valueOf(dataSnapshot.child("altura").getValue()));
             }
 
             @Override
@@ -58,7 +60,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
             }
         });
 
-        Log.d("username", username);
         usuario = new Usuario();
         edNombre = findViewById(R.id.edNombre);
         edApellidos = findViewById(R.id.edApellidos);

@@ -7,8 +7,8 @@ package vidal.sergi.getfit.Objetos;
 public class Usuario {
     int idRutina;
     int idDieta;
-    String password;
     String nombre;
+    String password;
     String apellidos;
     int edad;
     String sexo;
@@ -28,7 +28,8 @@ public class Usuario {
         this.altura = altura;
     }
 
-    public Usuario(int idRutina, String nombre, String apellidos, int edad, String sexo, double peso, int altura) {
+    public Usuario(int idDieta, int idRutina, String nombre, String apellidos, int edad, String sexo, double peso, int altura) {
+        this.idDieta = idDieta;
         this.idRutina = idRutina;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -37,6 +38,7 @@ public class Usuario {
         this.peso = peso;
         this.altura = altura;
     }
+
 
     public int getIdRutina() {
         return idRutina;

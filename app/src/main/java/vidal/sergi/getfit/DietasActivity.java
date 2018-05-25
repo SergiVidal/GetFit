@@ -53,7 +53,7 @@ public class DietasActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvDieta);
         tvNombreDieta = findViewById(R.id.tvNombreDieta);
 
-        final String username = getIntent().getExtras().getString("user");
+//        final String username = getIntent().getExtras().getString("user");
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_dietas);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,22 +62,22 @@ public class DietasActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.action_home:
                         intent = new Intent(DietasActivity.this, HomeActivity.class);
-                        intent.putExtra("user", username);
+//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_rutinas:
                         intent = new Intent(DietasActivity.this, RutinasActivity.class);
-                        intent.putExtra("user", username);
+//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_dietas:
                         intent = new Intent(DietasActivity.this, DietasActivity.class);
-                        intent.putExtra("user", username);
+//                        intent.putExtra("user", username);
                         startActivity(intent);;
                         break;
                     case R.id.action_ajustes:
                         intent = new Intent(DietasActivity.this, AjustesActivity.class);
-                        intent.putExtra("user", username);
+//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                 }

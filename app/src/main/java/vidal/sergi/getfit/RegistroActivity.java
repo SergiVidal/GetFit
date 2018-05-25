@@ -19,12 +19,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import vidal.sergi.getfit.Objetos.FirebaseReferences;
+import vidal.sergi.getfit.Objetos.Usuario;
 
 public class RegistroActivity extends AppCompatActivity {
 
     EditText email, password;
     TextView btnLogin, btnRegistrar;
-
+    String emailRegistro, passwordRegistro;
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference usersRef = database.getReference(FirebaseReferences.USERS);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +46,8 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("BUTTON","onCLick()");
-                String emailRegistro = email.getText().toString();
-                String passwordRegistro = password.getText().toString();
+                emailRegistro = email.getText().toString();
+                passwordRegistro = password.getText().toString();
                 registrar(emailRegistro, passwordRegistro);
             }
         });
@@ -60,6 +67,8 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
+                    String username = emailRegistro.split("@")[0];
+                    usersRef.child(username).setValue(new Usuario(" ", " ", 0, " ", 0, 0));
                     Toast.makeText(RegistroActivity.this, "Usuario creado correctamente", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegistroActivity.this, LoginActivity.class);
                     startActivity(intent);

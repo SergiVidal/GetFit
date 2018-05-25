@@ -24,7 +24,7 @@ public class AjustesActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
 
-        final String username = getIntent().getExtras().getString("user");
+//        final String username = getIntent().getExtras().getString("user");
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_ajustes);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -33,22 +33,22 @@ public class AjustesActivity extends AppCompatActivity{
                 switch (item.getItemId()){
                     case R.id.action_home:
                         intent = new Intent(AjustesActivity.this, HomeActivity.class);
-                        intent.putExtra("user", username);
+//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_rutinas:
                         intent = new Intent(AjustesActivity.this, RutinasActivity.class);
-                        intent.putExtra("user", username);
+//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_dietas:
                         intent = new Intent(AjustesActivity.this, DietasActivity.class);
-                        intent.putExtra("user", username);
+//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_ajustes:
                         intent = new Intent(AjustesActivity.this, AjustesActivity.class);
-                        intent.putExtra("user", username);
+//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                 }
@@ -68,7 +68,7 @@ public class AjustesActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
-                intent.putExtra("user", username);
+//                intent.putExtra("user", username);
                 startActivity(intent);
             }
         });
