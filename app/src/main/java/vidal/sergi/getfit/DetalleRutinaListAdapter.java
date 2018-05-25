@@ -3,6 +3,7 @@ package vidal.sergi.getfit;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +12,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import static vidal.sergi.getfit.DetalleRutinaActivity.getTextFromTextView;
+import static vidal.sergi.getfit.DetalleRutinaActivity.tvNR;
+import static vidal.sergi.getfit.EjerciciosActivity.getTextFromTextView1;
+
 public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutinaListAdapter.ViewHolder> {
 
     private List<String> musculosList;
     private List<Integer> fotosList;
+
 
 
     DetalleRutinaListAdapter(List<String> musculosList, List<Integer> fotosList){
@@ -31,6 +37,7 @@ public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutina
         public ViewHolder(View itemVIew) {
             super(itemVIew);
             tvNombreMusculo = itemVIew.findViewById(R.id.tvNombreMusculo);
+
             frameLayout = itemVIew.findViewById(R.id.frameLayoutRutinas);
             frameLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -38,6 +45,7 @@ public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutina
                     Context context = view.getContext();
                     Intent intent = new Intent(context, EjerciciosActivity.class);
                     intent.putExtra("nombreMusculo", tvNombreMusculo.getText());
+                    intent.putExtra("nombreRutina", getTextFromTextView(tvNR));
                     context.startActivity(intent);
                 }
             });

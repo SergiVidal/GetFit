@@ -16,7 +16,7 @@ import java.util.List;
 
 import vidal.sergi.getfit.Objetos.Ejercicio;
 
-import static vidal.sergi.getfit.EjerciciosActivity.getTextFromTextView;
+import static vidal.sergi.getfit.EjerciciosActivity.getTextFromTextView1;
 import static vidal.sergi.getfit.EjerciciosActivity.tvNM;
 
 public class EjerciciosListAdaptar extends BaseAdapter {
@@ -25,10 +25,12 @@ public class EjerciciosListAdaptar extends BaseAdapter {
     List<Ejercicio> ejerciciosList;
     TextView tvNombreEjercicio, tvSeries, tvRepeticiones, tvDescanso, tvNombreMusculo;
     FrameLayout frameLayout;
+    String nombreRutina;
 
-    public EjerciciosListAdaptar(ValueEventListener context, List<Ejercicio> ejerciciosList) {
+    public EjerciciosListAdaptar(ValueEventListener context, List<Ejercicio> ejerciciosList, String nombreRutina) {
         this.context = context;
         this.ejerciciosList = ejerciciosList;
+        this.nombreRutina = nombreRutina;
     }
 
     @Override
@@ -48,14 +50,14 @@ public class EjerciciosListAdaptar extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        if (view == null) {
+        if (view == null)
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.grid_rutinas, parent, false);
-        }
-        tvNombreEjercicio = view.findViewById(R.id.tvNombreEjercicio);
-        tvNombreMusculo = view.findViewById(R.id.tvNM);
 
         final Ejercicio ejercicio = getItem(position);
+        tvNombreEjercicio = view.findViewById(R.id.tvNombreEjercicio);
         tvNombreEjercicio.setText(ejercicio.getNombre());
+
+        tvNombreMusculo = view.findViewById(R.id.tvNM);
 
         frameLayout = view.findViewById(R.id.frameLayoutEjercicio);
         frameLayout.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +68,12 @@ public class EjerciciosListAdaptar extends BaseAdapter {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, DetalleEjerciciosActivity.class);
                 intent.putExtra("nombreEjercicio", ejercicio.getNombre());
-                intent.putExtra("nombreMusculo", getTextFromTextView(tvNM));
+                intent.putExtra("nombreMusculo", getTextFromTextView1(tvNM));
+                intent.putExtra("nombreRutina", nombreRutina);
+
                 context.startActivity(intent);
             }
         });
         return view;
     }
 }
-

@@ -20,7 +20,7 @@ public class DetalleEjerciciosActivity extends AppCompatActivity {
     ImageView ivEjercicio;
     TextView tvNEjercicio, tvS, tvR, tvD;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-
+    DatabaseReference rutinas = database.getReference(FirebaseReferences.RUTINAS);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +35,12 @@ public class DetalleEjerciciosActivity extends AppCompatActivity {
 
         String nombreEjercicio = getIntent().getExtras().getString("nombreEjercicio");
         String nombreMusculo = getIntent().getExtras().getString("nombreMusculo");
+        String nombreRutina = getIntent().getExtras().getString("nombreRutina");
         Log.d("svm", nombreMusculo);
         Log.d("svm", nombreEjercicio);
-        DatabaseReference rutinas = database.getReference(FirebaseReferences.RUTINAS);
-        DatabaseReference rutina = database.getReference(FirebaseReferences.RUTINA);
+        Log.d("svm", nombreRutina);
 
-        rutinas.child(rutina.getKey()).child(nombreMusculo).child(nombreEjercicio).addValueEventListener(new ValueEventListener() {
+        rutinas.child(nombreRutina).child(nombreMusculo).child(nombreEjercicio).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tvNEjercicio.setText(dataSnapshot.child("nombre").getValue(String.class));

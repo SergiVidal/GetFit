@@ -25,6 +25,7 @@ public class DetalleRutinaActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     TextView tvNombreMusculo;
+    static TextView tvNR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class DetalleRutinaActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rvDetalleRutina);
         tvNombreMusculo = findViewById(R.id.tvNombreRutina);
+        tvNR= findViewById(R.id.tvNR);
 
         final List<String> musculosList = new ArrayList<>();
         final List<Integer> fotosList = new ArrayList<>();
@@ -40,6 +42,7 @@ public class DetalleRutinaActivity extends AppCompatActivity {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         String nombreRutina = getIntent().getExtras().getString("nombreRutina");
         Log.v("svm",nombreRutina);
+        tvNR.setText(nombreRutina);
         DatabaseReference rutinas = database.getReference(FirebaseReferences.RUTINAS);
 
         rutinas.child(nombreRutina).addValueEventListener(new ValueEventListener() {
@@ -73,8 +76,13 @@ public class DetalleRutinaActivity extends AppCompatActivity {
 
     }
 
-    private int randomBgColor() {
-        Random rnd = new Random();
-        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+    public static String getTextFromTextView(TextView textView){
+        try{
+            return (String) textView.getText();
+        }
+        catch (Exception ex){
+            Log.d("Exception","Exception of type"+ex.getMessage());
+        }
+        return "";
     }
 }

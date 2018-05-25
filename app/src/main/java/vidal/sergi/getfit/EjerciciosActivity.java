@@ -40,13 +40,13 @@ public class EjerciciosActivity extends AppCompatActivity {
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final String nombreMusculo = getIntent().getExtras().getString("nombreMusculo");
+        final String nombreRutina = getIntent().getExtras().getString("nombreRutina");
         Log.d("svm", nombreMusculo);
+        Log.d("svm", nombreRutina);
         tvNM.setText(nombreMusculo);
 
         DatabaseReference rutinas = database.getReference(FirebaseReferences.RUTINAS);
-        DatabaseReference rutina = database.getReference(FirebaseReferences.RUTINA);
-
-        rutinas.child(rutina.getKey()).child(nombreMusculo).addValueEventListener(new ValueEventListener() {
+        rutinas.child(nombreRutina).child(nombreMusculo).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {
@@ -56,9 +56,8 @@ public class EjerciciosActivity extends AppCompatActivity {
                 for(Ejercicio ejercicio: ejerciciosList)
                     Log.d("svm", ejercicio.toString());
 
-                EjerciciosListAdaptar adapter = new EjerciciosListAdaptar(this, ejerciciosList);
+                EjerciciosListAdaptar adapter = new EjerciciosListAdaptar(this, ejerciciosList, nombreRutina);
                 gridView.setAdapter(adapter);
-
             }
 
             @Override
@@ -68,7 +67,7 @@ public class EjerciciosActivity extends AppCompatActivity {
         });
 
     }
-    public static String getTextFromTextView(TextView textView){
+    public static String getTextFromTextView1(TextView textView){
         try{
             return (String) textView.getText();
         }
@@ -76,9 +75,5 @@ public class EjerciciosActivity extends AppCompatActivity {
             Log.d("Exception","Exception of type"+ex.getMessage());
         }
         return "";
-    }
-    private int randomBgColor() {
-        Random rnd = new Random();
-        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
     }
 }
