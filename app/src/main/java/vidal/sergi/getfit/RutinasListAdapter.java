@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -27,18 +28,28 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvNombreRutina;
         FrameLayout frameLayout;
+        Button btnIdRutina;
 
         public ViewHolder(View itemVIew) {
             super(itemVIew);
             tvNombreRutina = itemVIew.findViewById(R.id.tvNombreRutina);
             frameLayout = itemVIew.findViewById(R.id.frameLayoutRutinas);
+            btnIdRutina = itemVIew.findViewById(R.id.btnIdRutina);
             frameLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, DetalleRutinaActivity.class);
                     intent.putExtra("nombreRutina", tvNombreRutina.getText());
+//                    intent.putExtra("idRutina", String.valueOf(btnIdRutina.getText()));
                     context.startActivity(intent);
+                }
+            });
+
+            btnIdRutina.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    Log.d("svm", String.valueOf(btnIdRutina.getText()));
                 }
             });
         }
@@ -56,7 +67,8 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tvNombreRutina.setText(rutinaList.get(position).getNombre());
         holder.frameLayout.setBackgroundResource(rutinaList.get(position).getImg());
-        //Bindejar Foto?
+        holder.btnIdRutina.setText(String.valueOf(rutinaList.get(position).getId()));
+
     }
 
     //Retornar la cantitad de players

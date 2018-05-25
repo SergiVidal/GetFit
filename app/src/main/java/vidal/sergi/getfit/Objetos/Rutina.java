@@ -4,14 +4,24 @@ import java.util.List;
 
 public class Rutina {
 
+    private int id;
     private int img;
     private String nombre;
     private List<Musculo> musculoList;
 
-    public Rutina(int img, String nombre, List<Musculo> musculoList) {
+    public Rutina(int id, int img, String nombre, List<Musculo> musculoList) {
+        this.id = id;
         this.img = img;
         this.nombre = nombre;
         this.musculoList = musculoList;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getImg() {

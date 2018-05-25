@@ -8,28 +8,42 @@
     android:background="@drawable/grid_border"
     >
 
-    <TextView
-        android:id="@+id/tvNombreRutina"
-        android:layout_width="336dp"
-        android:layout_height="184dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="Nombre"
-        android:textAllCaps="true"
-        android:textColor="#ffffff"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:shadowColor="@color/colorBlack"
-        android:shadowDx="10"
-        android:shadowDy="10"
-        android:shadowRadius="20"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/tvNombreRutina"
+            android:layout_width="336dp"
+            android:layout_height="184dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:shadowColor="@color/colorBlack"
+            android:shadowDx="10"
+            android:shadowDy="10"
+            android:shadowRadius="20"
+            android:text="Nombre"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/btnIdRutina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="20dp"
+            android:text="Button" />
+
+    </RelativeLayout>
 </FrameLayout>

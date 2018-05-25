@@ -89,11 +89,10 @@ public class RutinasActivity extends AppCompatActivity {
             }
         });
 
+        final Rutina fibrar = new Rutina(1, R.drawable.gym1, "Fibrar", crearRutina1());
+        final Rutina tonificar = new Rutina(2, R.drawable.gym2, "Tonificar", crearRutina2());
+        final Rutina muscular = new Rutina(3, R.drawable.gym3, "Muscular", crearRutina3());
         rutinaList = new ArrayList<>();
-        //Foto?
-        final Rutina fibrar = new Rutina(R.drawable.gym1, "Fibrar", crearRutina1());
-        final Rutina tonificar = new Rutina(R.drawable.gym2, "Tonificar", crearRutina2());
-        final Rutina muscular = new Rutina(R.drawable.gym3, "Muscular", crearRutina3());
         rutinaList.add(fibrar);
         rutinaList.add(tonificar);
         rutinaList.add(muscular);
