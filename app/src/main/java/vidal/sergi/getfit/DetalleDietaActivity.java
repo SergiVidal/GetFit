@@ -25,6 +25,7 @@ public class DetalleDietaActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     TextView tvNombreComida;
+    static TextView tvND;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +34,18 @@ public class DetalleDietaActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rvDetalleDieta);
         tvNombreComida = findViewById(R.id.tvNombreDieta);
+        tvND= findViewById(R.id.tvND);
 
         final List<String> comidasList = new ArrayList<>();
         final List<Integer> fotosList = new ArrayList<>();
 
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String nombreRutina = getIntent().getExtras().getString("nombreDieta");
+        String nombreDieta = getIntent().getExtras().getString("nombreDieta");
+        Log.v("svm",nombreDieta);
+        tvND.setText(nombreDieta);
         DatabaseReference rutinas = database.getReference(FirebaseReferences.DIETAS);
 
-        rutinas.child(nombreRutina).addValueEventListener(new ValueEventListener() {
+        rutinas.child(nombreDieta).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childDataSnapshot : dataSnapshot.getChildren()) {

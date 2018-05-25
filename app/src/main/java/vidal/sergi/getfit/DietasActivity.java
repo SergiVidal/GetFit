@@ -53,7 +53,6 @@ public class DietasActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvDieta);
         tvNombreDieta = findViewById(R.id.tvNombreDieta);
 
-//        final String username = getIntent().getExtras().getString("user");
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_dietas);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,22 +61,18 @@ public class DietasActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.action_home:
                         intent = new Intent(DietasActivity.this, HomeActivity.class);
-//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_rutinas:
                         intent = new Intent(DietasActivity.this, RutinasActivity.class);
-//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_dietas:
                         intent = new Intent(DietasActivity.this, DietasActivity.class);
-//                        intent.putExtra("user", username);
                         startActivity(intent);;
                         break;
                     case R.id.action_ajustes:
                         intent = new Intent(DietasActivity.this, AjustesActivity.class);
-//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                 }
@@ -104,7 +99,7 @@ public class DietasActivity extends AppCompatActivity {
         alimentoList = new ArrayList<>();
 
         //Comida 1
-        Alimento tortilla = new Alimento("Tortilla - 100g", 250);
+        Alimento tortilla = new Alimento("Tortilla", 250, 100);
         alimentoList.add(tortilla);
 
         Comida desayuno = new Comida("Desayuno", alimentoList);
@@ -116,10 +111,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 2
         alimentoList = new ArrayList<>();
 
-        Alimento miniBocadillo = new Alimento("Bocadillo - 100g", 200);
+        Alimento miniBocadillo = new Alimento("Bocadillo", 200, 100);
         alimentoList.add(miniBocadillo);
 
-        Alimento piezasFrutas = new Alimento("Fruta - 50g", 100);
+        Alimento piezasFrutas = new Alimento("Fruta", 100, 50);
         alimentoList.add(piezasFrutas);
 
         Comida almuerzo = new Comida("Almuerzo", alimentoList);
@@ -132,10 +127,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 3
         alimentoList = new ArrayList<>();
 
-        Alimento hidratos = new Alimento("Arroz o Pasta o Legumbres - 200g", 300);
+        Alimento hidratos = new Alimento("Arroz o Pasta o Legumbres", 300, 200);
         alimentoList.add(hidratos);
 
-        Alimento proteinas = new Alimento("Pescado o Carne o Verduras - 150g", 100);
+        Alimento proteinas = new Alimento("Pescado o Carne o Verduras", 100, 150);
         alimentoList.add(proteinas);
 
         Comida comida = new Comida("Comida", alimentoList);
@@ -148,10 +143,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 4
         alimentoList = new ArrayList<>();
 
-        Alimento tortasDeArroz = new Alimento("Tortas de Arroz - 100g", 80);
+        Alimento tortasDeArroz = new Alimento("Tortas de Arroz", 80, 100);
         alimentoList.add(tortasDeArroz);
 
-        Alimento pavo = new Alimento("Pavo - 120g", 100);
+        Alimento pavo = new Alimento("Pavo", 100, 120);
         alimentoList.add(pavo);
 
         Comida merienda = new Comida("Merienda", alimentoList);
@@ -164,10 +159,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 5
         alimentoList = new ArrayList<>();
 
-        Alimento arroz = new Alimento("Arroz - 70g", 120);
+        Alimento arroz = new Alimento("Arroz", 120, 70);
         alimentoList.add(arroz);
 
-        Alimento pollo = new Alimento("Pollo - 250g", 250);
+        Alimento pollo = new Alimento("Pollo", 250, 250);
         alimentoList.add(pollo);
 
         Comida cena = new Comida("Cena", alimentoList);
@@ -184,7 +179,7 @@ public class DietasActivity extends AppCompatActivity {
         alimentoList = new ArrayList<>();
 
         //Comida 1
-        Alimento tortilla = new Alimento("Tortilla - 100g", 250);
+        Alimento tortilla = new Alimento("Tortilla", 250, 100);
         alimentoList.add(tortilla);
 
         Comida desayuno = new Comida("Desayuno", alimentoList);
@@ -196,10 +191,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 2
         alimentoList = new ArrayList<>();
 
-        Alimento miniBocadillo = new Alimento("Bocadillo - 100g", 200);
+        Alimento miniBocadillo = new Alimento("Bocadillo", 200, 100);
         alimentoList.add(miniBocadillo);
 
-        Alimento piezasFrutas = new Alimento("Fruta - 50g", 100);
+        Alimento piezasFrutas = new Alimento("Fruta", 100, 50);
         alimentoList.add(piezasFrutas);
 
         Comida almuerzo = new Comida("Almuerzo", alimentoList);
@@ -212,10 +207,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 3
         alimentoList = new ArrayList<>();
 
-        Alimento hidratos = new Alimento("Arroz o Pasta o Legumbres - 200g", 300);
+        Alimento hidratos = new Alimento("Arroz o Pasta o Legumbres", 300, 200);
         alimentoList.add(hidratos);
 
-        Alimento proteinas = new Alimento("Pescado o Carne o Verduras - 150g", 100);
+        Alimento proteinas = new Alimento("Pescado o Carne o Verduras", 100, 150);
         alimentoList.add(proteinas);
 
         Comida comida = new Comida("Comida", alimentoList);
@@ -228,10 +223,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 4
         alimentoList = new ArrayList<>();
 
-        Alimento tortasDeArroz = new Alimento("Tortas de Arroz - 100g", 80);
+        Alimento tortasDeArroz = new Alimento("Tortas de Arroz", 80, 100);
         alimentoList.add(tortasDeArroz);
 
-        Alimento pavo = new Alimento("Pavo - 120g", 100);
+        Alimento pavo = new Alimento("Pavo", 100, 120);
         alimentoList.add(pavo);
 
         Comida merienda = new Comida("Merienda", alimentoList);
@@ -244,10 +239,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 5
         alimentoList = new ArrayList<>();
 
-        Alimento arroz = new Alimento("Arroz - 70g", 120);
+        Alimento arroz = new Alimento("Arroz", 120, 70);
         alimentoList.add(arroz);
 
-        Alimento pollo = new Alimento("Pollo - 250g", 250);
+        Alimento pollo = new Alimento("Pollo", 250, 250);
         alimentoList.add(pollo);
 
         Comida cena = new Comida("Cena", alimentoList);
@@ -264,7 +259,7 @@ public class DietasActivity extends AppCompatActivity {
         alimentoList = new ArrayList<>();
 
         //Comida 1
-        Alimento tortilla = new Alimento("Tortilla - 100g", 250);
+        Alimento tortilla = new Alimento("Tortilla", 250, 100);
         alimentoList.add(tortilla);
 
         Comida desayuno = new Comida("Desayuno", alimentoList);
@@ -276,10 +271,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 2
         alimentoList = new ArrayList<>();
 
-        Alimento miniBocadillo = new Alimento("Bocadillo - 100g", 200);
+        Alimento miniBocadillo = new Alimento("Bocadillo", 200, 100);
         alimentoList.add(miniBocadillo);
 
-        Alimento piezasFrutas = new Alimento("Fruta - 50g", 100);
+        Alimento piezasFrutas = new Alimento("Fruta", 100, 50);
         alimentoList.add(piezasFrutas);
 
         Comida almuerzo = new Comida("Almuerzo", alimentoList);
@@ -292,10 +287,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 3
         alimentoList = new ArrayList<>();
 
-        Alimento hidratos = new Alimento("Arroz o Pasta o Legumbres - 200g", 300);
+        Alimento hidratos = new Alimento("Arroz o Pasta o Legumbres", 300, 200);
         alimentoList.add(hidratos);
 
-        Alimento proteinas = new Alimento("Pescado o Carne o Verduras - 150g", 100);
+        Alimento proteinas = new Alimento("Pescado o Carne o Verduras", 100, 150);
         alimentoList.add(proteinas);
 
         Comida comida = new Comida("Comida", alimentoList);
@@ -308,7 +303,7 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 4
         alimentoList = new ArrayList<>();
 
-        Alimento tortasDeArroz = new Alimento("Tortas de Arroz - 100g", 80);
+        Alimento tortasDeArroz = new Alimento("Tortas de Arroz", 80, 100);
         alimentoList.add(tortasDeArroz);
 
         Alimento pavo = new Alimento("Pavo - 120g", 100);
@@ -324,10 +319,10 @@ public class DietasActivity extends AppCompatActivity {
         //Comida 5
         alimentoList = new ArrayList<>();
 
-        Alimento arroz = new Alimento("Arroz - 70g", 120);
+        Alimento arroz = new Alimento("Arroz", 120, 70);
         alimentoList.add(arroz);
 
-        Alimento pollo = new Alimento("Pollo - 250g", 250);
+        Alimento pollo = new Alimento("Pollo", 250, 250);
         alimentoList.add(pollo);
 
         Comida cena = new Comida("Cena", alimentoList);

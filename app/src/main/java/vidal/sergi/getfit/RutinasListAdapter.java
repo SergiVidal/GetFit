@@ -87,7 +87,6 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
         holder.tvNombreRutina.setText(rutinaList.get(position).getNombre());
         holder.frameLayout.setBackgroundResource(rutinaList.get(position).getImg());
         holder.btnIdRutina.setTag(String.valueOf(rutinaList.get(position).getId()));
-
     }
 
     //Retornar la cantitad de players

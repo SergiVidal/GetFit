@@ -57,7 +57,6 @@ public class RutinasActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rvRutina);
         tvNombreRutina = findViewById(R.id.tvNombreRutina);
 
-//        final String username = getIntent().getExtras().getString("user");
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_rutinas);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -66,22 +65,18 @@ public class RutinasActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.action_home:
                         intent = new Intent(RutinasActivity.this, HomeActivity.class);
-//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_rutinas:
                         intent = new Intent(RutinasActivity.this, RutinasActivity.class);
-//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_dietas:
                         intent = new Intent(RutinasActivity.this, DietasActivity.class);
-//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                     case R.id.action_ajustes:
                         intent = new Intent(RutinasActivity.this, AjustesActivity.class);
-//                        intent.putExtra("user", username);
                         startActivity(intent);
                         break;
                 }

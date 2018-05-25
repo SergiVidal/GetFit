@@ -39,7 +39,6 @@ public class DietasListAdapter extends RecyclerView.Adapter<DietasListAdapter.Vi
         FrameLayout frameLayout;
         FloatingActionButton btnIdDieta;
 
-
         public ViewHolder(final View itemVIew){
             super(itemVIew);
             tvNombreDieta = itemVIew.findViewById(R.id.tvNombreDieta);
@@ -54,6 +53,7 @@ public class DietasListAdapter extends RecyclerView.Adapter<DietasListAdapter.Vi
                     context.startActivity(intent);
                 }
             });
+
             btnIdDieta.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -64,7 +64,6 @@ public class DietasListAdapter extends RecyclerView.Adapter<DietasListAdapter.Vi
                     Toast.makeText(itemVIew.getContext(), "Ahora sigues esta dieta.", Toast.LENGTH_SHORT).show();
                 }
             });
-
         }
     }
 

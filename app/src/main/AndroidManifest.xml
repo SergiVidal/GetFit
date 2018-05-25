@@ -27,6 +27,7 @@
         <activity android:name=".EjerciciosActivity" />
         <activity android:name=".AlimentosActivity" />
         <activity android:name=".DetalleEjerciciosActivity" />
+        <activity android:name=".DetalleAlimentosActivity" />
 
     </application>
 

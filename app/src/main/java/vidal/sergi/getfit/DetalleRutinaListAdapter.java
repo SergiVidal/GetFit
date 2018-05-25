@@ -21,8 +21,6 @@ public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutina
     private List<String> musculosList;
     private List<Integer> fotosList;
 
-
-
     DetalleRutinaListAdapter(List<String> musculosList, List<Integer> fotosList){
         super();
         this.musculosList = musculosList;
@@ -37,7 +35,6 @@ public class DetalleRutinaListAdapter extends RecyclerView.Adapter<DetalleRutina
         public ViewHolder(View itemVIew) {
             super(itemVIew);
             tvNombreMusculo = itemVIew.findViewById(R.id.tvNombreMusculo);
-
             frameLayout = itemVIew.findViewById(R.id.frameLayoutRutinas);
             frameLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
