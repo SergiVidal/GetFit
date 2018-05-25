@@ -2,6 +2,7 @@ package vidal.sergi.getfit;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,13 +12,23 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.List;
 
+import vidal.sergi.getfit.Objetos.FirebaseReferences;
 import vidal.sergi.getfit.Objetos.Rutina;
+import vidal.sergi.getfit.Objetos.Usuario;
 
 public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.ViewHolder> {
 
     private List<Rutina> rutinaList;
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference usersRef = database.getReference(FirebaseReferences.USERS);
 
     RutinasListAdapter (List<Rutina> rutinaList){
         super();
@@ -41,7 +52,7 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
                     Context context = view.getContext();
                     Intent intent = new Intent(context, DetalleRutinaActivity.class);
                     intent.putExtra("nombreRutina", tvNombreRutina.getText());
-//                    intent.putExtra("idRutina", String.valueOf(btnIdRutina.getText()));
+                    intent.putExtra("idRutina", String.valueOf(btnIdRutina.getText()));
                     context.startActivity(intent);
                 }
             });
@@ -50,6 +61,10 @@ public class RutinasListAdapter extends RecyclerView.Adapter<RutinasListAdapter.
                 @Override
                 public void onClick(View v) {
 //                    Log.d("svm", String.valueOf(btnIdRutina.getText()));
+                    btnIdRutina.setBackgroundColor(Color.GREEN);
+                    //Cambiar child "svidalmestre"
+                    usersRef.child("svidalmestre").child("idRutina").setValue(String.valueOf(btnIdRutina.getText()));
+
                 }
             });
         }

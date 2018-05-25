@@ -5,6 +5,7 @@ package vidal.sergi.getfit.Objetos;
  */
 
 public class Usuario {
+    int idRutina;
     String password;
     String nombre;
     String apellidos;
@@ -24,6 +25,24 @@ public class Usuario {
         this.sexo = sexo;
         this.peso = peso;
         this.altura = altura;
+    }
+
+    public Usuario(int idRutina, String nombre, String apellidos, int edad, String sexo, double peso, int altura) {
+        this.idRutina = idRutina;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.peso = peso;
+        this.altura = altura;
+    }
+
+    public int getIdRutina() {
+        return idRutina;
+    }
+
+    public void setIdRutina(int idRutina) {
+        this.idRutina = idRutina;
     }
 
     public String getPassword() {
@@ -93,6 +112,7 @@ public class Usuario {
     @Override
     public String toString() {
         return "Usuario{" +
+                "idRutina=" + idRutina +
                 ", password='" + password + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
