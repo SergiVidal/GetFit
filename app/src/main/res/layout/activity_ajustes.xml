@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="57dp"
         android:text="Ajustes"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         android:textSize="30sp" />
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_marginTop="12dp"
         android:layout_toStartOf="@+id/ajustes"
         android:text="Cuenta"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         android:textSize="18sp" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_below="@+id/cuenta"
         android:layout_marginTop="23dp"
         android:text="Editar Perfil"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         android:onClick="onClick"
         android:clickable="true"
         android:focusable="true" />
@@ -50,7 +50,7 @@
         android:layout_below="@+id/editarPerfil"
         android:layout_marginTop="24dp"
         android:text="Configuración"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         android:textSize="18sp" />
 
     <TextView
@@ -60,7 +60,7 @@
         android:layout_alignStart="@+id/configuracion"
         android:layout_below="@+id/configuracion"
         android:layout_marginTop="24dp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         android:text="Idioma" />
 
     <TextView
@@ -70,7 +70,7 @@
         android:layout_alignStart="@+id/idioma"
         android:layout_below="@+id/idioma"
         android:layout_marginTop="21dp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         android:text="Notificaciones" />
 
     <TextView
@@ -80,7 +80,7 @@
         android:layout_alignStart="@+id/notificaciones"
         android:layout_below="@+id/notificaciones"
         android:layout_marginTop="17dp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         android:text="Información"
         android:textSize="18sp" />
 
@@ -92,7 +92,7 @@
         android:layout_below="@+id/informacion"
         android:layout_marginTop="23dp"
         android:text="Política de privacidad"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <TextView
@@ -103,7 +103,7 @@
         android:layout_below="@+id/politica"
         android:layout_marginTop="18dp"
         android:text="Anuncios"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <TextView
@@ -114,7 +114,7 @@
         android:layout_below="@+id/anuncios"
         android:layout_marginTop="16dp"
         android:text="Versión"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <TextView
@@ -125,7 +125,7 @@
         android:layout_below="@+id/version"
         android:layout_marginTop="16dp"
         android:text="Ayuda"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <android.support.design.widget.BottomNavigationView

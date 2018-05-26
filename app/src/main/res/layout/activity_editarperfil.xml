@@ -12,7 +12,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:text="Ajustes"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         android:textSize="30sp" />
 
     <TextView
@@ -23,7 +23,7 @@
         android:layout_marginTop="40dp"
         android:layout_toStartOf="@+id/textView"
         android:text="Nombre:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_below="@+id/tvNombre"
         android:layout_marginTop="30dp"
         android:text="Apellidos:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <TextView
@@ -45,7 +45,7 @@
         android:layout_alignStart="@+id/tvApellidos"
         android:layout_marginTop="30dp"
         android:text="Edad:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <TextView
@@ -56,7 +56,7 @@
         android:layout_alignStart="@+id/tvEdad"
         android:layout_marginTop="30dp"
         android:text="Sexo"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <TextView
@@ -67,7 +67,7 @@
         android:layout_alignStart="@+id/tvSexo"
         android:layout_marginTop="30dp"
         android:text="Peso:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <TextView
@@ -78,7 +78,7 @@
         android:layout_below="@+id/edPeso"
         android:layout_marginTop="30dp"
         android:text="Altura:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <EditText
@@ -90,7 +90,7 @@
         android:layout_alignStart="@+id/edApellidos"
         android:hint="Nombre"
         android:textSize="14sp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <EditText
@@ -102,7 +102,7 @@
         android:layout_toEndOf="@+id/textView"
         android:hint="Apellidos"
         android:textSize="14sp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <EditText
@@ -115,7 +115,7 @@
         android:hint="Edad"
         android:textSize="14sp"
         android:inputType="number"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <EditText
@@ -127,7 +127,7 @@
         android:layout_alignStart="@+id/edEdad"
         android:hint="Sexo"
         android:textSize="14sp"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <EditText
@@ -140,7 +140,7 @@
         android:hint="Peso"
         android:textSize="14sp"
         android:inputType="number"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <EditText
@@ -153,7 +153,7 @@
         android:hint="Altura"
         android:textSize="14sp"
         android:inputType="number"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorBlack"
         />
 
     <Button
