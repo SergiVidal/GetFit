@@ -10,7 +10,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -44,11 +46,21 @@ public class DietasActivity extends AppCompatActivity {
     List<Comida> comidaList;
     List<Alimento> alimentoList;
     List<Dieta> dietaList;
+    ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dietas);
+
+        ivLogo = findViewById(R.id.ivLogo);
+        ivLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(DietasActivity.this, AjustesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         recyclerView = findViewById(R.id.rvDieta);
         tvNombreDieta = findViewById(R.id.tvNombreDieta);
@@ -71,10 +83,10 @@ public class DietasActivity extends AppCompatActivity {
                         intent = new Intent(DietasActivity.this, DietasActivity.class);
                         startActivity(intent);;
                         break;
-                    case R.id.action_ajustes:
-                        intent = new Intent(DietasActivity.this, AjustesActivity.class);
-                        startActivity(intent);
-                        break;
+//                    case R.id.action_ajustes:
+//                        intent = new Intent(DietasActivity.this, AjustesActivity.class);
+//                        startActivity(intent);
+//                        break;
                 }
                 return true;
             }

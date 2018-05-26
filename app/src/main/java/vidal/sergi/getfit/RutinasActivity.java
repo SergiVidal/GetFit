@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -48,11 +49,21 @@ public class RutinasActivity extends AppCompatActivity {
     List<Musculo> musculoList;
     List<Ejercicio> ejercicioList;
     List<Rutina> rutinaList;
+    ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rutinas);
+
+        ivLogo = findViewById(R.id.ivLogo);
+        ivLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(RutinasActivity.this, AjustesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         recyclerView = findViewById(R.id.rvRutina);
         tvNombreRutina = findViewById(R.id.tvNombreRutina);
@@ -75,10 +86,10 @@ public class RutinasActivity extends AppCompatActivity {
                         intent = new Intent(RutinasActivity.this, DietasActivity.class);
                         startActivity(intent);
                         break;
-                    case R.id.action_ajustes:
-                        intent = new Intent(RutinasActivity.this, AjustesActivity.class);
-                        startActivity(intent);
-                        break;
+//                    case R.id.action_ajustes:
+//                        intent = new Intent(RutinasActivity.this, AjustesActivity.class);
+//                        startActivity(intent);
+//                        break;
                 }
                 return true;
             }
