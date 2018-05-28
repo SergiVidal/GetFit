@@ -36,7 +36,7 @@
         android:layout_above="@+id/bottom_navigation"
 
         android:columnWidth="120dp"
-        android:horizontalSpacing="50dp"
+        android:horizontalSpacing="25dp"
         android:numColumns="auto_fit"
         android:padding="5dp"
         android:verticalSpacing="5dp" />

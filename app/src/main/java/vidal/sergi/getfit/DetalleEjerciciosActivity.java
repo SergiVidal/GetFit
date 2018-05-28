@@ -63,9 +63,9 @@ public class DetalleEjerciciosActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tvNEjercicio.setText(dataSnapshot.child("nombre").getValue(String.class));
-                tvS.setText(String.valueOf(dataSnapshot.child("series").getValue(Integer.class)));
-                tvR.setText(String.valueOf(dataSnapshot.child("repeticiones").getValue(Integer.class)));
-                tvD.setText(String.valueOf(dataSnapshot.child("descanso").getValue(Integer.class)));
+                tvS.setText("Series: " + String.valueOf(dataSnapshot.child("series").getValue(Integer.class)));
+                tvR.setText("Repeticiones: " + String.valueOf(dataSnapshot.child("repeticiones").getValue(Integer.class)));
+                tvD.setText("Descanso: " + String.valueOf(dataSnapshot.child("descanso").getValue(Integer.class)) + "\"");
 
             }
 

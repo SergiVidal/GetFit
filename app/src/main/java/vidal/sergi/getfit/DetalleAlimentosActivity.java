@@ -61,8 +61,8 @@ public class DetalleAlimentosActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 tvNALimento.setText(dataSnapshot.child("nombre").getValue(String.class));
-                tvC.setText(String.valueOf(dataSnapshot.child("calorias").getValue(Integer.class)));
-                tvG.setText(String.valueOf(dataSnapshot.child("gramos").getValue(Integer.class)));
+                tvC.setText("Calorias: " + String.valueOf(dataSnapshot.child("calorias").getValue(Integer.class)));
+                tvG.setText("Cantidad: " + String.valueOf(dataSnapshot.child("gramos").getValue(Integer.class)) + "g");
 
             }
 
