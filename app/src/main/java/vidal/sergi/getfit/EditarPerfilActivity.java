@@ -9,8 +9,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,13 +33,15 @@ import vidal.sergi.getfit.Objetos.Usuario;
 
 public class EditarPerfilActivity extends AppCompatActivity {
 
-    EditText edNombre, edApellidos, edEdad, edSexo, edPeso, edAltura;
+    EditText edNombre, edApellidos, edEdad, edPeso, edAltura;
     TextView btnSave, btnIMC;
     Intent intent;
 
     String nombre, apellidos, sexo;
     int edad, altura;
     double peso, imc;
+    Spinner spinner;
+    int spinnerPosition;
     Usuario usuario;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference usersRef = database.getReference(FirebaseReferences.USERS);
@@ -49,7 +53,10 @@ public class EditarPerfilActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_editarperfil);
-//        final String username = getIntent().getExtras().getString("user");
+        spinner = findViewById(R.id.spinner1);
+        String[] items = new String[]{"Hombre", "Mujer"};
+        final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
+        spinner.setAdapter(adapter);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String email = user.getEmail();
         final String username = email.split("@")[0];
@@ -59,7 +66,15 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 edNombre.setText(String.valueOf(dataSnapshot.child("nombre").getValue()));
                 edApellidos.setText(String.valueOf(dataSnapshot.child("apellidos").getValue()));
                 edEdad.setText(String.valueOf(dataSnapshot.child("edad").getValue()));
-                edSexo.setText(String.valueOf(dataSnapshot.child("sexo").getValue()));
+//                spinner.setSele().toString(String.valueOf(dataSnapshot.child("sexo").getValue()));
+                Log.d("svm", spinner.getSelectedItem().toString());
+                if (dataSnapshot.child("sexo").getValue() == "Hombre") {
+                    spinnerPosition = adapter.getPosition("Hombre");
+                    spinner.setSelection(spinnerPosition);
+                }else{
+                    spinnerPosition = adapter.getPosition("Mujer");
+                    spinner.setSelection(spinnerPosition);
+                }
                 edPeso.setText(String.valueOf(dataSnapshot.child("peso").getValue()));
                 edAltura.setText(String.valueOf(dataSnapshot.child("altura").getValue()));
             }
@@ -74,7 +89,6 @@ public class EditarPerfilActivity extends AppCompatActivity {
         edNombre = findViewById(R.id.edNombre);
         edApellidos = findViewById(R.id.edApellidos);
         edEdad = findViewById(R.id.edEdad);
-        edSexo = findViewById(R.id.edSexo);
         edPeso = findViewById(R.id.edPeso);
         edAltura = findViewById(R.id.edAltura);
         btnSave = findViewById(R.id.btnSave);
@@ -86,7 +100,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 nombre = edNombre.getText().toString();
                 apellidos = edApellidos.getText().toString();
                 edad = Integer.parseInt(edEdad.getText().toString());
-                sexo = edSexo.getText().toString();
+                sexo = spinner.getSelectedItem().toString();
                 peso = Double.parseDouble(edPeso.getText().toString());
                 altura = Integer.parseInt(edAltura.getText().toString());
 
