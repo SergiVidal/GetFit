@@ -68,7 +68,7 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 edEdad.setText(String.valueOf(dataSnapshot.child("edad").getValue()));
 //                spinner.setSele().toString(String.valueOf(dataSnapshot.child("sexo").getValue()));
                 Log.d("svm", spinner.getSelectedItem().toString());
-                if (dataSnapshot.child("sexo").getValue() == "Hombre") {
+                if (dataSnapshot.child("sexo").getValue().equals("Hombre")) {
                     spinnerPosition = adapter.getPosition("Hombre");
                     spinner.setSelection(spinnerPosition);
                 }else{
