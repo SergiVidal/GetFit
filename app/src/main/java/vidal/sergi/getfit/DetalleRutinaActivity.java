@@ -72,12 +72,12 @@ public class DetalleRutinaActivity extends AppCompatActivity {
                     musculosList.add(childDataSnapshot.getKey());
                 }
                 fotosList.add(R.drawable.abdominales);
-                fotosList.add(R.drawable.biceps);
+                fotosList.add(R.drawable.biceps1);
                 fotosList.add(R.drawable.cuadriceps);
-                fotosList.add(R.drawable.dorsales);
-                fotosList.add(R.drawable.femorales);
-                fotosList.add(R.drawable.gemelos);
-                fotosList.add(R.drawable.hombrofrontal);
+                fotosList.add(R.drawable.dorsales1);
+                fotosList.add(R.drawable.femoral1);
+                fotosList.add(R.drawable.gemelos1);
+                fotosList.add(R.drawable.hombroforntal);
                 fotosList.add(R.drawable.hombroposterior);
                 fotosList.add(R.drawable.pectoral);
                 fotosList.add(R.drawable.triceps);

@@ -10,29 +10,32 @@
     android:layout_marginTop="15dp"
     android:background="@drawable/grid_border">
 
-        <TextView
-            android:id="@+id/tvNombreRutina"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:shadowColor="@color/colorBlack"
-            android:shadowDx="10"
-            android:shadowDy="10"
-            android:shadowRadius="20"
-            android:text="NombreRutina"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#ffffff"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvNombreRutina"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="7dp"
+                    android:gravity="center"
+                    android:shadowColor="@color/colorBlack"
+                    android:shadowDx="10"
+                    android:shadowDy="10"
+                    android:shadowRadius="20"
+                    android:text="NombreRutina"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/btnIdRutina"
@@ -45,5 +48,5 @@
             android:layout_marginEnd="15dp"
             android:background="@color/colorAccent"
             android:src="@drawable/ic_add" />
-
+        </RelativeLayout>
 </FrameLayout>
