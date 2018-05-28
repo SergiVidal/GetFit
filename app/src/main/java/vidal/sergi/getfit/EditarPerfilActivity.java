@@ -1,11 +1,17 @@
 package vidal.sergi.getfit;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +32,9 @@ import vidal.sergi.getfit.Objetos.Usuario;
 public class EditarPerfilActivity extends AppCompatActivity {
 
     EditText edNombre, edApellidos, edEdad, edSexo, edPeso, edAltura;
-    Button btnSave, btnIMC;
+    TextView btnSave, btnIMC;
+    Intent intent;
+
     String nombre, apellidos, sexo;
     int edad, altura;
     double peso, imc;
@@ -38,6 +46,8 @@ public class EditarPerfilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_editarperfil);
 //        final String username = getIntent().getExtras().getString("user");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -113,6 +123,29 @@ public class EditarPerfilActivity extends AppCompatActivity {
                 Toast.makeText(EditarPerfilActivity.this, "Tu IMC es: " + imc, Toast.LENGTH_SHORT).show();
 
 
+            }
+        });
+
+        final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_rutinas);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_home:
+                        intent = new Intent(EditarPerfilActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_rutinas:
+                        intent = new Intent(EditarPerfilActivity.this, RutinasActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_dietas:
+                        intent = new Intent(EditarPerfilActivity.this, DietasActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+                return true;
             }
         });
     }

@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -16,16 +18,27 @@ import android.widget.TextView;
 
 public class AjustesActivity extends AppCompatActivity{
 
-    TextView editarPerfil, idioma, notificaciones, politica, anuncios, version, ayuda;
+    TextView editarPerfil, politica, anuncios, version, ayuda;
     Intent intent;
+    ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ajustes);
 
+        ivLogo = findViewById(R.id.ivLogo);
+        ivLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(AjustesActivity.this, AjustesActivity.class);
+                startActivity(intent);
+            }
+        });
+
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setSelectedItemId(R.id.action_ajustes);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -42,18 +55,12 @@ public class AjustesActivity extends AppCompatActivity{
                         intent = new Intent(AjustesActivity.this, DietasActivity.class);
                         startActivity(intent);
                         break;
-//                    case R.id.action_ajustes:
-//                        intent = new Intent(AjustesActivity.this, AjustesActivity.class);
-//                        startActivity(intent);
-//                        break;
                 }
                 return true;
             }
         });
 
         editarPerfil = findViewById(R.id.editarPerfil);
-        idioma = findViewById(R.id.idioma);
-        notificaciones = findViewById(R.id.notificaciones);
         politica = findViewById(R.id.politica);
         anuncios = findViewById(R.id.anuncios);
         version = findViewById(R.id.version);
@@ -63,52 +70,38 @@ public class AjustesActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
-//                intent.putExtra("user", username);
                 startActivity(intent);
             }
         });
-        idioma.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
-                startActivity(intent);
-            }
-        });
-        notificaciones.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
-                startActivity(intent);
-            }
-        });
-        politica.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
-                startActivity(intent);
-            }
-        });
-        anuncios.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
-                startActivity(intent);
-            }
-        });
-        version.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
-                startActivity(intent);
-            }
-        });
-        ayuda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
-                startActivity(intent);
-            }
-        });
+
+//        politica.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        anuncios.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        version.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        ayuda.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(AjustesActivity.this, EditarPerfilActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 }

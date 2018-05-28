@@ -1,8 +1,14 @@
 package vidal.sergi.getfit;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,10 +27,14 @@ public class DetalleEjerciciosActivity extends AppCompatActivity {
     TextView tvNEjercicio, tvS, tvR, tvD;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference rutinas = database.getReference(FirebaseReferences.RUTINAS);
+    Intent intent;
+    ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detalle_ejercicios);
 
         ivEjercicio = findViewById(R.id.ivEjercicio);
@@ -32,6 +42,15 @@ public class DetalleEjerciciosActivity extends AppCompatActivity {
         tvS = findViewById(R.id.tvS);
         tvR = findViewById(R.id.tvR);
         tvD = findViewById(R.id.tvD);
+
+        ivLogo = findViewById(R.id.ivLogo);
+        ivLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(DetalleEjerciciosActivity.this, AjustesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         String nombreEjercicio = getIntent().getExtras().getString("nombreEjercicio");
         String nombreMusculo = getIntent().getExtras().getString("nombreMusculo");
@@ -53,6 +72,33 @@ public class DetalleEjerciciosActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.d("Error", databaseError.getMessage());
+            }
+        });
+
+        final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_rutinas);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_home:
+                        intent = new Intent(DetalleEjerciciosActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_rutinas:
+                        intent = new Intent(DetalleEjerciciosActivity.this, RutinasActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_dietas:
+                        intent = new Intent(DetalleEjerciciosActivity.this, DietasActivity.class);
+                        startActivity(intent);
+                        break;
+//                    case R.id.action_ajustes:
+//                        intent = new Intent(RutinasActivity.this, AjustesActivity.class);
+//                        startActivity(intent);
+//                        break;
+                }
+                return true;
             }
         });
 

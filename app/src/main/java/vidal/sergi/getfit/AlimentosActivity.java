@@ -1,9 +1,16 @@
 package vidal.sergi.getfit;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,14 +29,27 @@ public class AlimentosActivity extends AppCompatActivity {
 
     GridView gridView;
     static TextView tvNC;
+    Intent intent;
+    ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_alimentos);
 
         gridView = findViewById(R.id.gvDieta);
         tvNC = findViewById(R.id.tvNC);
+
+        ivLogo = findViewById(R.id.ivLogo);
+        ivLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(AlimentosActivity.this, AjustesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         final List<Alimento> alimentosList = new ArrayList<>();
         final List<Integer> fotosList = new ArrayList<>();
@@ -62,5 +82,31 @@ public class AlimentosActivity extends AppCompatActivity {
             }
         });
 
+        final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_dietas);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_home:
+                        intent = new Intent(AlimentosActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_rutinas:
+                        intent = new Intent(AlimentosActivity.this, RutinasActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_dietas:
+                        intent = new Intent(AlimentosActivity.this, DietasActivity.class);
+                        startActivity(intent);
+                        break;
+//                    case R.id.action_ajustes:
+//                        intent = new Intent(RutinasActivity.this, AjustesActivity.class);
+//                        startActivity(intent);
+//                        break;
+                }
+                return true;
+            }
+        });
     }
 }

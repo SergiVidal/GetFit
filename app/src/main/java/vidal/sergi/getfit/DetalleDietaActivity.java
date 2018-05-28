@@ -1,12 +1,19 @@
 package vidal.sergi.getfit;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,15 +33,28 @@ public class DetalleDietaActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView tvNombreComida;
     static TextView tvND;
+    Intent intent;
+    ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detalledieta);
 
         recyclerView = findViewById(R.id.rvDetalleDieta);
         tvNombreComida = findViewById(R.id.tvNombreDieta);
         tvND= findViewById(R.id.tvND);
+
+        ivLogo = findViewById(R.id.ivLogo);
+        ivLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(DetalleDietaActivity.this, AjustesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         final List<String> comidasList = new ArrayList<>();
         final List<Integer> fotosList = new ArrayList<>();
@@ -70,5 +90,31 @@ public class DetalleDietaActivity extends AppCompatActivity {
             }
         });
 
+        final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_dietas);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_home:
+                        intent = new Intent(DetalleDietaActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_rutinas:
+                        intent = new Intent(DetalleDietaActivity.this, RutinasActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_dietas:
+                        intent = new Intent(DetalleDietaActivity.this, DietasActivity.class);
+                        startActivity(intent);
+                        break;
+//                    case R.id.action_ajustes:
+//                        intent = new Intent(RutinasActivity.this, AjustesActivity.class);
+//                        startActivity(intent);
+//                        break;
+                }
+                return true;
+            }
+        });
     }
 }

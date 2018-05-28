@@ -1,12 +1,19 @@
 package vidal.sergi.getfit;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -26,15 +33,28 @@ public class DetalleRutinaActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView tvNombreMusculo;
     static TextView tvNR;
+    Intent intent;
+    ImageView ivLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_detallerutina);
 
         recyclerView = findViewById(R.id.rvDetalleRutina);
         tvNombreMusculo = findViewById(R.id.tvNombreRutina);
         tvNR= findViewById(R.id.tvNR);
+
+        ivLogo = findViewById(R.id.ivLogo);
+        ivLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(DetalleRutinaActivity.this, AjustesActivity.class);
+                startActivity(intent);
+            }
+        });
 
         final List<String> musculosList = new ArrayList<>();
         final List<Integer> fotosList = new ArrayList<>();
@@ -71,6 +91,33 @@ public class DetalleRutinaActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.d("Error", databaseError.getMessage());
+            }
+        });
+
+        final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_rutinas);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_home:
+                        intent = new Intent(DetalleRutinaActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_rutinas:
+                        intent = new Intent(DetalleRutinaActivity.this, RutinasActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.action_dietas:
+                        intent = new Intent(DetalleRutinaActivity.this, DietasActivity.class);
+                        startActivity(intent);
+                        break;
+//                    case R.id.action_ajustes:
+//                        intent = new Intent(RutinasActivity.this, AjustesActivity.class);
+//                        startActivity(intent);
+//                        break;
+                }
+                return true;
             }
         });
 

@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -54,6 +55,8 @@ public class RutinasActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_rutinas);
 
         ivLogo = findViewById(R.id.ivLogo);
@@ -95,13 +98,13 @@ public class RutinasActivity extends AppCompatActivity {
             }
         });
 
-        final Rutina fibrar = new Rutina(1, R.drawable.gym1, "Fibrar", crearRutina1());
-        final Rutina tonificar = new Rutina(2, R.drawable.gym2, "Tonificar", crearRutina2());
-        final Rutina muscular = new Rutina(3, R.drawable.gym3, "Muscular", crearRutina3());
+        final Rutina definicion = new Rutina(1, R.drawable.gym1, "Definición", crearRutina1());
+        final Rutina volumen = new Rutina(2, R.drawable.gym2, "Volumen", crearRutina2());
+        final Rutina fuerza = new Rutina(3, R.drawable.gym3, "Fuerza", crearRutina3());
         rutinaList = new ArrayList<>();
-        rutinaList.add(fibrar);
-        rutinaList.add(tonificar);
-        rutinaList.add(muscular);
+        rutinaList.add(definicion);
+        rutinaList.add(volumen);
+        rutinaList.add(fuerza);
 
         RutinasListAdapter adapter = new RutinasListAdapter(rutinaList);
         recyclerView.setLayoutManager (new LinearLayoutManager(RutinasActivity.this));
@@ -153,7 +156,7 @@ public class RutinasActivity extends AppCompatActivity {
         Ejercicio pressFrances = new Ejercicio("Press Frances en Polea", 4, 12, 1.30);
         ejercicioList.add(pressFrances);
 
-        Musculo triceps = new Musculo("Triceps", ejercicioList);
+        Musculo triceps = new Musculo("Tríceps", ejercicioList);
         musculoList.add(triceps);
 
         for(Ejercicio ejercicio: ejercicioList)
