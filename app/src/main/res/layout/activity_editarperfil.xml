@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/cardViewSave"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="175dp"
         android:text="Nombre:"
         android:textColor="@color/colorBlack" />
 
@@ -148,9 +148,9 @@
         android:id="@+id/cardViewSave"
         android:layout_width="344dp"
         android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/edAltura"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="15dp"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp">
@@ -183,11 +183,9 @@
         android:id="@+id/cardViewIMC"
         android:layout_width="343dp"
         android:layout_height="50dp"
-        android:layout_alignEnd="@+id/edAltura"
-        android:layout_alignStart="@+id/tvAltura"
-        android:layout_below="@+id/edAltura"
-        android:layout_marginStart="-9dp"
-        android:layout_marginTop="100dp"
+        android:layout_below="@+id/cardViewSave"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp">
@@ -243,7 +241,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
-                android:layout_marginStart="101dp"
+                android:layout_marginStart="90dp"
                 android:src="@drawable/logo_getfit" />
 
             <TextView

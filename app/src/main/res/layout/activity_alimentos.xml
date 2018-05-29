@@ -34,12 +34,10 @@
         android:layout_width="match_parent"
         android:layout_height="470dp"
         android:layout_above="@+id/bottom_navigation"
-
-        android:columnWidth="120dp"
-        android:horizontalSpacing="25dp"
-        android:numColumns="auto_fit"
-        android:padding="5dp"
-        android:verticalSpacing="5dp" />
+        android:columnWidth="250dp"
+        android:numColumns="2"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -71,7 +69,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_gravity="center"
-                android:layout_marginStart="101dp"
+                android:layout_marginStart="90dp"
                 android:src="@drawable/logo_getfit" />
 
             <TextView
