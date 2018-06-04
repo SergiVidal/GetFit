@@ -25,9 +25,8 @@
         android:id="@+id/ivAlimento"
         android:layout_width="175dp"
         android:layout_height="175dp"
-        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/tvNALimento"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp"
         android:background="@drawable/dinner" />
 
     <TextView
