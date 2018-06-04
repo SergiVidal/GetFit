@@ -27,8 +27,11 @@
         <activity android:name=".DetalleDietaActivity" />
         <activity android:name=".EjerciciosActivity" />
         <activity android:name=".AlimentosActivity" />
+        <activity android:name=".DiasActivity"/>
+        <activity android:name=".LunesActivity"/>
         <activity android:name=".DetalleEjerciciosActivity" />
         <activity android:name=".DetalleAlimentosActivity" />
+
 
     </application>
 

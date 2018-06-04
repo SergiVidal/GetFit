@@ -86,10 +86,7 @@ public class DietasActivity extends AppCompatActivity {
                         intent = new Intent(DietasActivity.this, DietasActivity.class);
                         startActivity(intent);;
                         break;
-//                    case R.id.action_ajustes:
-//                        intent = new Intent(DietasActivity.this, AjustesActivity.class);
-//                        startActivity(intent);
-//                        break;
+
                 }
                 return true;
             }

@@ -14,102 +14,102 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
-import java.util.List;
 
-public class HomeActivity extends AppCompatActivity {
-    private static final String TAG ="HomeActivity";
+public class DiasActivity extends AppCompatActivity {
+    public final String TAG ="DiasActivity";
     Intent intent;
-    public String semana;
-    public String day;
-
-    public String getSemana() {
-        return semana;
-    }
-
-    public void setSemana(String semana) {
-        this.semana = semana;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
-    }
-
-    //vars
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
 
     ImageView ivLogo;
 
 
+
+    private ArrayList<String> mNames = new ArrayList<>();
+    private ArrayList<String> mImageUrls = new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_home2);
+        setContentView(R.layout.activity_dias);
         Log.d(TAG, "onCreate: started.");
-        initImageBitmaps();
 
-        ivLogo = findViewById(R.id.ivLogo2);
+        initImageBitmaps();
+        ivLogo = findViewById(R.id.ivLogo1);
         ivLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(HomeActivity.this, AjustesActivity.class);
+                intent = new Intent(DiasActivity.this, AjustesActivity.class);
                 startActivity(intent);
             }
         });
-        final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation1);
+        final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation4);
         bottomNavigationView.setSelectedItemId(R.id.action_home);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.action_home:
-                        intent = new Intent(HomeActivity.this, HomeActivity.class);
+                        intent = new Intent(DiasActivity.this, HomeActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.action_rutinas:
-                        intent = new Intent(HomeActivity.this, RutinasActivity.class);
+                        intent = new Intent(DiasActivity.this, RutinasActivity.class);
                         startActivity(intent);
                         break;
                     case R.id.action_dietas:
-                        intent = new Intent(HomeActivity.this, DietasActivity.class);
+                        intent = new Intent(DiasActivity.this, DietasActivity.class);
                         startActivity(intent);;
                         break;
                 }
                 return true;
             }
         });
+
     }
+
     private void initImageBitmaps(){
-        mImageUrls.add("https://schools.stlucie.k12.fl.us/lpa/files/2017/09/Events-Icon.png");
-        mNames.add("Semana1");
+        Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
+        mImageUrls.add("https://image.flaticon.com/icons/png/128/42/42524.png");
+        mNames.add("Lunes");
 
-        mImageUrls.add("https://schools.stlucie.k12.fl.us/lpa/files/2017/09/Events-Icon.png");
-        mNames.add("Semana2");
+        mImageUrls.add("https://www.shareicon.net/data/256x256/2015/11/15/672701_calendar_512x512.png");
+        mNames.add("Martes");
 
-        mImageUrls.add("https://schools.stlucie.k12.fl.us/lpa/files/2017/09/Events-Icon.png");
-        mNames.add("Semana3");
+        mImageUrls.add("https://www.shareicon.net/data/256x256/2015/11/16/672906_calendar_512x512.png");
+        mNames.add("Miercoles");
 
-        mImageUrls.add("https://schools.stlucie.k12.fl.us/lpa/files/2017/09/Events-Icon.png");
-        mNames.add("Semana4");
+        mImageUrls.add("https://www.shareicon.net/data/256x256/2015/11/16/672860_calendar_512x512.png");
+        mNames.add("Jueves");
+
+        mImageUrls.add("https://www.shareicon.net/data/256x256/2015/11/15/672747_calendar_512x512.png");
+        mNames.add("Viernes");
+
+        mImageUrls.add("https://www.shareicon.net/data/256x256/2015/11/15/672757_calendar_512x512.png");
+        mNames.add("Sábado");
+
+        mImageUrls.add("https://www.shareicon.net/data/128x128/2015/11/15/672742_calendar_512x512.png");
+        mNames.add("Domingo");
+
         initRecyclerView();
     }
     private void initRecyclerView(){
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        AdapterHome adapter = new AdapterHome(mNames,mImageUrls,this);
+        Bundle extras2 = getIntent().getExtras();
+            String value = extras2.getString("semana1");
+            String contador2 = value;
+            String val = contador2;
+
+
+
+        RecyclerView recyclerView = findViewById(R.id.recycler1);
+        DiasAdapter adapter = new DiasAdapter(mNames,mImageUrls,this,contador2);
+        adapter.setIntento(val);
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+
+
+
 }
